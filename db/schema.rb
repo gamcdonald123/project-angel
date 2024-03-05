@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_04_155223) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_150250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crimes", force: :cascade do |t|
+    t.string "category"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "street"
+    t.string "month"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reports", force: :cascade do |t|
     t.string "report_type"
