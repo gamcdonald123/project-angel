@@ -29,6 +29,9 @@ gem "jbuilder"
 # Cloudinary gem install
 gem "cloudinary"
 
+#Geocoder gem install
+gem "geocoder"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
