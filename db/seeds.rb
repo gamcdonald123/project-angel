@@ -8,3 +8,5 @@ Crime.create(category: "burglary", latitude: 51.555521, longitude: 0.071922, str
 Crime.create(category: "criminal-damage-arson", latitude: 51.641999, longitude: 0.072353, street: "On or near Longcroft Rise", month: "2024-01")
 
 Crime.create(category: "theft-from-the-person", latitude: 51.555521, longitude: 0.071922, street: "On or near Shopping Area", month: "2024-01")
+
+puts "Seeded database with 5 crimes"

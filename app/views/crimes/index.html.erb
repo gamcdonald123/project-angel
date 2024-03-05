@@ -1,8 +1,10 @@
 <h1>Crimes</h1>
 
-@crimes.each do |crime|
+<% @crimes.each do |crime| %>
   <div>
-    <h2><%= crime.title %></h2>
-    <p><%= crime.description %></p>
+    <h5><strong>Street:</strong> <%= crime.street %></h5>
+    <p><strong>Category:</strong> <%= crime.category %></p>
+    <p><strong>Latitude:</strong> <%= crime.latitude %></p>
+    <p><strong>Longitude:</strong> <%= crime.longitude %></p>
   </div>
-end
+<% end %>
