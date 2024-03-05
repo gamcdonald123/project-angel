@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :reports, only: %i[index show new create]
-  resources :safe_places, only: %i[index show]
+resources :reports, only: %i[index show new create]
+resources :safe_places, only: %i[index show]
+
+get "map", to: "pages#map"
+
 end
