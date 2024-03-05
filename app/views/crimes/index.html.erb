@@ -1,2 +1,8 @@
-<h1>Crimes#index</h1>
-<p>Find me in app/views/crimes/index.html.erb</p>
+<h1>Crimes</h1>
+
+@crimes.each do |crime|
+  <div>
+    <h2><%= crime.title %></h2>
+    <p><%= crime.description %></p>
+  </div>
+end
