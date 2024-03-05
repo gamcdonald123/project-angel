@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'safe_places/index'
-  get 'safe_places/show'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -11,9 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :reports, only: %i[show new create]
-  resources :safe_places, only: %i[show]
-  resource :communities do
-    resources :posts
-  end
+  resources :reports, only: %i[index show new create]
+  resources :safe_places, only: %i[index show]
 end
