@@ -1,3 +1,4 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-  <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+<h1>Home Page</h1>
+
+<p><%= link_to "Reports", reports_path %></p>
+<p><%= link_to "Safe Places", safe_places_path %></p>

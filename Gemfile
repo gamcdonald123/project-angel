@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+gem "psych", "~> 4.0"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
@@ -26,10 +28,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# cloudinary install
+# Cloudinary gem install
 gem "cloudinary"
 
-# geocoder install'
+#Geocoder gem install
 gem "geocoder"
 
 # Use Redis adapter to run Action Cable in production
