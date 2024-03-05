@@ -1,0 +1,2 @@
+class SafePlace < ApplicationRecord
+end
