@@ -13,13 +13,13 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
-      // center: [-0.122666176, 51.500331332],
-      // zoom: 12
+      style: "mapbox://styles/mapbox/streets-v10",
+      center: [-0.122666176, 51.500331332],
+      zoom: 9
     });
 
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+    // this.#fitMapToMarkers()
   }
 
   #addMarkersToMap() {
@@ -29,10 +29,6 @@ export default class extends Controller {
 
       const customMarker = document.createElement("div")
       customMarker.innerHTML = marker.marker_html
-
-      // This is where the error is happening
-
-      // console.dir(customMarker)
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
