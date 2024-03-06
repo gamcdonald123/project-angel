@@ -4,15 +4,20 @@ import mapboxgl from 'mapbox-gl';
 export default class extends Controller {
   static values = {
     apiKey: String,
+    markers: Array
   }
 
   connect() {
+
+    console.log(this.markersValue)
 
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
+      // center: [-0.122666176, 51.500331332],
+      // zoom: 12
     });
 
     this.#addMarkersToMap()
