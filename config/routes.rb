@@ -13,5 +13,6 @@ resources :reports, only: %i[index show new create]
 resources :safe_places, only: %i[index show]
 
 get "map", to: "pages#map"
+get "homepage", to: "pages#app"
 
 end
