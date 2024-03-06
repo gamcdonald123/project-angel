@@ -9,32 +9,28 @@ export default class extends Controller {
 
   connect() {
 
-    console.log(this.markersValue)
-
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
-      // center: [-0.122666176, 51.500331332],
-      // zoom: 12
+      style: "mapbox://styles/mapbox/streets-v10",
+      center: [-0.122666176, 51.500331332],
+      zoom: 9
     });
 
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
+    // this.#fitMapToMarkers()
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      console.log(marker)
-      let popupContent;
-      if (marker.type === 'crime') {
-        popupContent = marker.info_window_html;
-      } else if (marker.type === 'safe_place') {
-        popupContent = marker.info_window_html;
-      }
-      const popup = new mapboxgl.Popup().setHTML(popupContent);
-      new mapboxgl.Marker()
+
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
+
+      const customMarker = document.createElement("div")
+      customMarker.innerHTML = marker.marker_html
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map);
