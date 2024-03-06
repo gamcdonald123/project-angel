@@ -9,8 +9,6 @@ export default class extends Controller {
 
   connect() {
 
-    console.log(this.markersValue)
-
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -26,15 +24,17 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      console.log(marker)
-      let popupContent;
-      if (marker.type === 'crime') {
-        popupContent = marker.info_window_html;
-      } else if (marker.type === 'safe_place') {
-        popupContent = marker.info_window_html;
-      }
-      const popup = new mapboxgl.Popup().setHTML(popupContent);
-      new mapboxgl.Marker()
+
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
+
+      const customMarker = document.createElement("div")
+      customMarker.innerHTML = marker.marker_html
+
+      // This is where the error is happening
+
+      // console.dir(customMarker)
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map);
