@@ -1,12 +1,16 @@
 
 .card {
-  height: 180px;
-  width: 155px;
+  height: 140px;
+  width: 120px;
   margin: 10px;
-  font-weight:900;
+  font-weight:700;
   box-shadow: 1px 1px 1px 1px #a9a9a9;
   border-radius: 10px !important;
   border-style: groove !important;
+}
+
+.card, p {
+  font-size: small;
 }
 
 #map {

@@ -6,31 +6,16 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-  <div id="menu-btn">
-    <div class="btn btn-light rounded-circle position-absolute bottom-0 end-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+
+</div>
+
+<%# THIS NEEDS TO BE UPDATED WITH NICOLE'S REPORT BUTTON %>
+    <div id="menu-btn">
+      <div class="btn btn-light rounded-circle position-absolute bottom-0 end-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       <i class="fa-solid fa-bars"></i>
     </div>
   </div>
 
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <%# <div class="modal-header"> %>
-        <%# <h5 class="modal-title" id="staticBackdropLabel">Angel</h5> %>
-        <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
-      <%# </div> %>
-      <div class="modal-body">
-        <%= render "shared/popup" %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%# <button type="button" class="btn btn-dark">Understood</button> %>
-      </div>
-    </div>
-  </div>
-</div>
 
-
-
-</div>
+        <%= render "shared/reportpopup" %>
