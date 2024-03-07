@@ -69,4 +69,9 @@ export default class extends Controller {
         .addTo(this.map);
     });
   }
+
+  directionsTest() {
+    let url = "https://api.mapbox.com/directions/v5/driving/{coordinates}"
+    fetch(url)
+  }
 }
