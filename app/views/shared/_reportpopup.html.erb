@@ -1,0 +1,51 @@
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-body">
+
+  <div class="container border mt-3 text-center w-100 pb-5">
+
+    <p class="m-5"><strong>What would you like to report?</strong></p>
+
+      <div class="row">
+        <div class="col">
+
+        <%= link_to reports_path do %>
+        <div class="d-flex justify-content-evenly mb-3" >
+          <div class="card btn p-3 rounded-2 border border-4"><p>Harrassment</p>
+             <%= image_tag 'harrassment.png', height: 80, width: 80, alt: "Harrassment icon", class: "ml-1"%>
+          </div>,
+          <% end %>
+
+        <%= link_to reports_path do %>
+          <div class="card btn p-2 border border-4"><p>Anti-social behaviour</p>
+            <%= image_tag 'antisocial.png', height: 75, width: 72, alt: "Antisocial icon", class: "ml-3"%>
+          </div>
+        </div>
+        <% end %>
+
+        <%= link_to reports_path do %>
+        <div class="d-flex justify-content-evenly">
+          <div class="card btn pt-2 border"><p>Poor Lightning</p>
+            <%= image_tag 'poorlight.png', height: 80, width: 80, alt: "Lamp post icon", class: "ml-2"%>
+          </div>
+        <% end %>
+
+        <%= link_to reports_path do %>
+          <div class="card btn pt-2 border"><p>Hate Crime</p>
+            <%= image_tag 'hatecrime.png', height: 80, width: 80, alt: "Conflict icon", class: "ml-2 mt-1"%>
+          </div>
+        </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
