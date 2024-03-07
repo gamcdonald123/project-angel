@@ -23,7 +23,7 @@ User.create(email: "tony@tony.com", password: "password", first_name: "Tony", la
 User.create(email: "guy@guy.com", password: "password", first_name: "Guy", last_name: "Guy")
 
 
-puts "Creating 5 safe places"
+puts "Creating 6 safe places"
 
 SafePlace.create!(name: "Betty's place", latitude: 51.579386, longitude: 0.072610)
 
@@ -34,5 +34,8 @@ SafePlace.create!(name: "London Inn", latitude: 51.554890, longitude: 0.077832)
 SafePlace.create!(name: "Monique's place", latitude: 51.64396, longitude: 0.07553)
 
 SafePlace.create!(name: "Angela's place", latitude: 51.55283, longitude: 0.07288)
+
+SafePlace.create!(name: "St Leonard's Hospital", latitude: 51.533977813717286, longitude: -0.07677840204843199)
+
 
 puts "Seeding completed"
