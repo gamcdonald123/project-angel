@@ -13,6 +13,13 @@ class ReportsController < ApplicationController
   end
 
   def create
+    @report = Report.new(report_params)
+    @report.user = current_user
+    if @report.save
+      redirect_to reports_path(@report)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
 private

@@ -1,12 +1,15 @@
-<h3>Add a new report</h3>
+<div class="new-report">
+  <h3 class="text-center">Add a new report</h3>
 
-<%= simple_form_for(@report) do |f|%>
-<%= f.input :report_type %>
-<%= f.input :location %>
-<%= f.input :description %>
-<%= f.submit %>
-<% end %>
+  <div class="container w-75">
+    <%= simple_form_for(@report) do |f|%>
+      <%= f.input :report_type %>
+      <%= f.input :location %>
+      <%= f.input :description %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 
-
-<p><%= link_to "Back", reports_path %></p>
-<p><%= link_to "Home", root_path %></p>
+  <p class="px-4 mt-4"><%= link_to "Back", reports_path %></p>
+  <p class="px-4"><%= link_to "Home", root_path %></p>
+</div>
