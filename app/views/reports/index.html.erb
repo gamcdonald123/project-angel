@@ -3,13 +3,13 @@
 
   <% @reports.each do |report| %>
     <div class="container reports-list w-75 px-4">
-      <p><strong>Report Type: </strong><%= report.report_type %></p>
+      <p class="pt-2"><strong>Report Type: </strong><%= report.report_type %></p>
       <p><strong>Location: </strong><%= report.location %></p>
-      <p><strong>Description: </strong><%= report.description %></p>
+      <p class="pb-2"><strong>Description: </strong><%= report.description %></p>
     </div>
   <% end %>
 
 
-  <p class="px-4"><%= link_to "Back", root_path, class:"btn btn-light" %></p>
+  <p class="px-4 mt-4"><%= link_to "Back", root_path, class:"btn btn-light" %></p>
   <p class="px-4"><%= link_to "Add a report", new_report_path, class:"btn btn-warning" %></p>
 </div>
