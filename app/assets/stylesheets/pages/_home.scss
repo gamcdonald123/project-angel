@@ -1,1 +1,41 @@
-// Specific CSS for your home-page
+.background-image {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.tag-line {
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  top: 20px;
+  color: #F6F4D2;
+}
+
+.visitor-page-info {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px auto;
+}
+.route-planning-info {
+  background-color: #D4E09B;
+}
+
+.safe-places-info {
+  background-color: #F19C79;
+}
+
+.tips-info {
+  background-color: #9373AB;
+}
+
+.route-planning-info, .safe-places-info, .tips-info {
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+}

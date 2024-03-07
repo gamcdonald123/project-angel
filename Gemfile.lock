@@ -162,6 +162,8 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mapbox-gl-rails (2.9.0)
+      railties (>= 3.2)
     marcel (1.0.4)
     matrix (0.4.2)
     mime-types (3.5.2)
@@ -326,6 +328,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  mapbox-gl-rails (~> 2.9)
   pg (~> 1.1)
   psych (~> 4.0)
   puma (>= 5.0)
