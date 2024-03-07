@@ -54,6 +54,11 @@ img {
   height: 26px;  /* Adjusts image height */
 }
 
+.small-map iframe {
+  width: 300px !important;  /* Adjust as needed */
+  height: 200px !important;  /* Adjust as needed */
+}
+
 @media (min-width: 600px) {
   .column {
       width: 50%;
