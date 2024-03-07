@@ -34,6 +34,9 @@ gem "cloudinary"
 #Geocoder gem install
 gem "geocoder"
 
+# Mapbox gem install
+# gem 'mapbox-gl-rails', '~> 2.9'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
