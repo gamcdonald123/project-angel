@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name home_latitude home_longitude current_latitude current_longitude])
   end
+
+  def after_sign_in_path_for(_resource)
+    homepage_path
+  end
 end
