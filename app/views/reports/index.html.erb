@@ -1,5 +1,15 @@
-<h3>Reports in your area</h3>
+<div class="report-pages">
+  <h3 class="text-center py-4">Reports in your area</h3>
+
+  <% @reports.each do |report| %>
+    <div class="container reports-list w-75 px-4">
+      <p class="pt-2"><strong>Report Type: </strong><%= report.report_type %></p>
+      <p><strong>Location: </strong><%= report.location %></p>
+      <p class="pb-2"><strong>Description: </strong><%= report.description %></p>
+    </div>
+  <% end %>
 
 
-<p><%= link_to "Back", root_path %></p>
-<p><%= link_to "Add a report", new_report_path %></p>
+  <p class="px-4 mt-4"><%= link_to "Back", root_path, class:"btn btn-light" %></p>
+  <p class="px-4"><%= link_to "Add a report", new_report_path, class:"btn btn-warning" %></p>
+</div>
