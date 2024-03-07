@@ -1,6 +1,5 @@
 class SafePlacesController < ApplicationController
   def index
-    @safe_places = SafePlace.all
   end
 
   def show

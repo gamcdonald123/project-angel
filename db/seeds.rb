@@ -10,3 +10,29 @@ Crime.create(category: "criminal-damage-arson", latitude: 51.641999, longitude: 
 Crime.create(category: "theft-from-the-person", latitude: 51.555521, longitude: 0.071922, street: "On or near Shopping Area", month: "2024-01")
 
 puts "Seeded database with 5 crimes"
+
+
+puts "Creating logins for team"
+
+User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Nicole")
+
+User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mirela")
+
+User.create(email: "tony@tony.com", password: "password", first_name: "Tony", last_name: "Tony")
+
+User.create(email: "guy@guy.com", password: "password", first_name: "Guy", last_name: "Guy")
+
+
+puts "Creating 5 safe places"
+
+SafePlace.create!(name: "Betty's place", latitude: 51.579386, longitude: 0.072610)
+
+SafePlace.create!(name: "RCCG Hall of Mercy", latitude: 51.540441, longitude: 0.072561)
+
+SafePlace.create!(name: "London Inn", latitude: 51.554890, longitude: 0.077832)
+
+SafePlace.create!(name: "Monique's place", latitude: 51.64396, longitude: 0.07553)
+
+SafePlace.create!(name: "Angela's place", latitude: 51.55283, longitude: 0.07288)
+
+puts "Seeding completed"
