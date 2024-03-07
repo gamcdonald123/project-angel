@@ -1,0 +1,122 @@
+body {
+  background: rgb(147,115,171);
+  background: linear-gradient(180deg, rgba(147,115,171,1) 21%, rgba(188,125,227,1) 69%, rgba(220,194,240,1) 86%, rgba(255,255,255,1) 100%);
+  background-repeat: no-repeat;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around; /* Adjusts spacing between buttons */
+}
+.container {
+  width: 100%;
+}
+.column {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.small-button {
+  width: 80px;  /* Adjusts button width */
+  height: 60px;  /* Adjusts button height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: small !important;
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2); /* Adjusts font size */
+}
+
+.small-button img {
+  width: 26px;  /* Adjusts image width */
+  height: 26px;  /* Adjusts image height */
+}
+
+.small-map {
+  width: 400px !important;  /* Adjust as needed */
+  height: 600px !important;  /* Adjust as needed */
+}
+
+.button-sos {
+  background-color: lightcoral;
+  border-radius: 70%;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  color: black;
+  text-decoration: none;
+  position:relative;
+  display:block;
+  text-align: center;
+  transition-duration: 0.4s;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
+}
+
+.button-menu {
+  background-color: lightgrey;
+  border-radius: 70%;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  position:relative;
+  transition-duration: 0.4s;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2); // Added height property to match the height of .button-sos
+}
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-button:hover {
+  background-color: #45a049;  /* Change to the desired hover color */
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .column {
+      width: 50%;
+      float: left;
+  }
+}
+
+.mobile-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 130px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.min-height {
+  min-height: calc(100vh - 130px);
+}

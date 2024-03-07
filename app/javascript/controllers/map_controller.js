@@ -62,14 +62,13 @@ export default class extends Controller {
 
     navigator.geolocation.getCurrentPosition((data) => {
 
-      window.current_position = data
-
+      const { longitude, latitude } = data.coords;
+      this.map.setCenter([longitude, latitude]);
       new mapboxgl.Marker()
-        .setLngLat([ data.coords.longitude, data.coords.latitude ])
+        .setLngLat([longitude, latitude])
         .addTo(this.map);
         console.log(data.coords.latitude)
         console.log(data.coords.longitude)
     });
-
   }
 }

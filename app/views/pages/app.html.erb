@@ -1,20 +1,23 @@
-<h1>Angel</h1>
-  <div class="d-flex align-content-between flex-row">
-    <div class="row"></div>
-    <div class="col p-2">
-        <div class="p-4 border">Report</div>
-        <div class="p-4 border">Safe Places</div>
-        <div class="p-4 border">Safe Journey</div>
-        </div>
-        <div class="col p-2">
-        <div class="p-4 border">Safe Map</div>
-        <div class="p-4 border">Community</div>
-        <div class="p-4 border">Take me home</div>
-        </div>
-        <div class="col p-2">
-        <div class="p-4 border">Contact</div>
-        <div class="p-4 border">Tips & Tricks</div>
-        <div class="p-4 border">Crime</div>
-        </div>
-        </div>
+ <div class="container">
+    <div class="small-map p-3">
+      <%= render "map" %>
     </div>
+      <div class="center">
+        <div class="row">
+          <div class="button-container">
+            <div class="btn btn-light p-2 border small-button">
+              <img src="<%= image_path('icons8-danger-50.png') %>"/>
+                <br>
+                  Report</div>
+              <div class="btn btn-light p-2 border small-button mx-3">
+                <img src="<%= image_path('icons8-home-50.png') %>"/>
+                  <br>
+                    home</div>
+                <div class="btn btn-light p-2 border small-button">
+                  <img src="<%= image_path('icons8-journey-50.png')%>"/>
+                    <br>
+                  Plan</div>
+            </div>
+        </div>
+      </div>
+</div>
