@@ -1,10 +1,11 @@
 class ReportsController < ApplicationController
 
   def index
-    @report = Report.all
+    @reports = Report.all
   end
 
   def show
+    @report = Report.find(params[:id])
   end
 
   def new
@@ -12,5 +13,11 @@ class ReportsController < ApplicationController
   end
 
   def create
+  end
+
+private
+
+  def report_params
+    params.require(:report).permit(:report_type, :location, :description)
   end
 end

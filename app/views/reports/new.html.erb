@@ -1,5 +1,12 @@
 <h3>Add a new report</h3>
 
+<%= simple_form_for(@report) do |f|%>
+<%= f.input :report_type %>
+<%= f.input :location %>
+<%= f.input :description %>
+<%= f.submit %>
+<% end %>
+
 
 <p><%= link_to "Back", reports_path %></p>
 <p><%= link_to "Home", root_path %></p>
