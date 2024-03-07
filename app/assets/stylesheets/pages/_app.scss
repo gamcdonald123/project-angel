@@ -4,8 +4,59 @@ body {
   background-repeat: no-repeat;
 }
 
-.logo-angel{
-  position:inherit;
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around; /* Adjusts spacing between buttons */
+}
+.container {
   width: 100%;
+}
+.column {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
   height: auto;
+}
+
+.small-button {
+  width: 80px;  /* Adjusts button width */
+  height: 60px;  /* Adjusts button height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: small !important; /* Adjusts font size */
+}
+
+.small-button img {
+  width: 26px;  /* Adjusts image width */
+  height: 26px;  /* Adjusts image height */
+}
+
+@media (min-width: 600px) {
+  .column {
+      width: 50%;
+      float: left;
+  }
 }

@@ -1,20 +1,26 @@
 
-  <div class="logo">
-    <%= image_tag "angel_logo.png", height: 300, width: 300, alt: "logo", class:"logo-angel img-fluid" %>
+  <div class="logo-container">
+    <%= image_tag "angel_logo.png", alt: "logo", class:"logo-angel img-fluid" %>
   </div>
     <div class="container">
-      <div class="d-flex justify-content-center flex-row img-fluid">
+    <div class="image-container">
+       <img src="<%= image_path('london_map.png') %>"class="shadow-sm img-fluid" width="300" height="300"/>
+    </div>
+      <div class="center">
         <div class="row">
-          <div class="col p-2">
-            <div class="btn btn-light p-3 border rounded" style="box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);" style="max-width:100%;height:auto;">
-              <img src="<%= image_path('icons8-high-importance-80.png') %>" class="shadow-sm img-fluid"/>
-                Report</div>
-              <div class="btn btn-light p-3 border rounded" style="box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);" style="max-width:100%;height:auto;">
-                <img src="<%= image_path('icons8-home-address-80.png') %>" style="max-width:100%;height:auto;" class="shadow-sm img-fluid"/>
-                  Take me home</div>
-                <div class="btn btn-light p-3 border rounded" style="box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);" style="max-width:100%;height:auto;">
-                  <img src="<%= image_path('icons8-journey-64.png') %> "class="shadow-sm img-fluid" style="max-width:100%;height:auto;"/>
-                  Plan your Journey</div>
+          <div class="button-container">
+            <div class="btn btn-light p-2 border small-button">
+              <img src="<%= image_path('icons8-danger-50.png') %>"/>
+                <br>
+                  Report</div>
+              <div class="btn btn-light p-2 border small-button mx-3">
+                <img src="<%= image_path('icons8-home-50.png') %>"/>
+                  <br>
+                    home</div>
+                <div class="btn btn-light p-2 border small-button">
+                  <img src="<%= image_path('icons8-journey-50.png')%>"/>
+                    <br>
+                  Plan</div>
             </div>
         </div>
       </div>
