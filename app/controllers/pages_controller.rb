@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    # rediect to dashboard if user is logged in
+    redirect_to homepage_path if user_signed_in?
   end
 
   def map

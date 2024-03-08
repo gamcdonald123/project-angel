@@ -1,3 +1,8 @@
+<%# If user is signed in, redirect to /homepage %>
+<% if user_signed_in? %>
+  <% redirect_to homepage_path %>
+<% end %>
+
 <%= image_tag "background-image.jpg", class:"background-image" %>
   <div class="banner">
     <div class="tag-line">
@@ -23,9 +28,12 @@
       <%= image_tag "tips-and-tricks.png" %>
       <p class="px-4">Get tailored tips and tricks for staying safe.</p>
     </div>
+    <%# if there is no user session, display sign up and login buttons %>
+    <% if !user_signed_in? %>
      <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-light"%>
+     <br>
+     <%= link_to "Login", new_user_session_path, class:"btn btn-warning"%>
+    <% end %>
   </div>
 
 </div>
-
-<%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete} %>
