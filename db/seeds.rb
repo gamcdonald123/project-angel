@@ -1,4 +1,4 @@
-require 'URI'
+require 'uri'
 
 Report.destroy_all
 User.destroy_all
