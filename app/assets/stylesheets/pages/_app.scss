@@ -34,7 +34,7 @@ img {
 
 .small-button {
   width: 80px;  /* Adjusts button width */
-  height: 60px;  /* Adjusts button height */
+  height: 85px;  /* Adjusts button height */
   display: flex;
   margin: 10px;
   align-items: center;
@@ -47,6 +47,7 @@ img {
 .small-button img {
   width: 26px;  /* Adjusts image width */
   height: 26px;  /* Adjusts image height */
+  margin-bottom: 5px;
 }
 
 .small-map {
