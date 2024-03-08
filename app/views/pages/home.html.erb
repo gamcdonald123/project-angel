@@ -28,9 +28,9 @@
     </div>
     <%# if there is no user session, display sign up and login buttons %>
     <% if !user_signed_in? %>
-     <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-light"%>
+     <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-light rounded-4"%>
      <br>
-     <%= link_to "Login", new_user_session_path, class:"btn btn-warning"%>
+     <%= link_to "Login", new_user_session_path, class:"btn btn-dark rounded-4"%>
     <% end %>
   </div>
 
