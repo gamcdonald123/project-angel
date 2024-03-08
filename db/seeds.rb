@@ -1,16 +1,24 @@
+require 'URI'
 
-Crime.create(category: "anti-social-behaviour", latitude: 51.578766, longitude: 0.072174, street: "On or near A123", month: "2024-01")
+Report.destroy_all
+User.destroy_all
+Crime.destroy_all
+SafePlace.destroy_all
 
-Crime.create(category: "anti-social-behaviour", latitude: 51.540025, longitude: 0.072159, street: "On or near Cowbridge Road", month: "2024-01")
+crimes_url = "https://data.police.uk/api/crimes-street/all-crime?poly=51.546767,-0.098853:51.546321,-0.055275:51.520231,-0.079147"
 
-Crime.create(category: "burglary", latitude: 51.555521, longitude: 0.071922, street: "On or near Shopping Area", month: "2024-01")
+response = URI.open(crimes_url).read
+data = JSON.parse(response)
 
-Crime.create(category: "criminal-damage-arson", latitude: 51.641999, longitude: 0.072353, street: "On or near Longcroft Rise", month: "2024-01")
+count = 0
+data.each do |crime|
+  if (crime["category"] == "violent-crime")
+    Crime.create(category: crime["category"], latitude: crime["location"]["latitude"], longitude: crime["location"]["longitude"], street: crime["location"]["street"]["name"], month: crime["month"])
+    puts "Created crime: #{crime["category"]}"
+  end
+end
 
-Crime.create(category: "theft-from-the-person", latitude: 51.555521, longitude: 0.071922, street: "On or near Shopping Area", month: "2024-01")
-
-puts "Seeded database with 5 crimes"
-
+puts "Seeded database with police API"
 
 puts "Creating logins for team"
 

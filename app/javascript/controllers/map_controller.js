@@ -11,7 +11,6 @@ export default class extends Controller {
   connect() {
 
     this.geoLocate()
-    console.log(this.current_position)
 
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -19,7 +18,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       center: [-0.15, 51.500394],
-      zoom: 15
+      zoom: 16
     });
 
     this.#addMarkersToMap()
