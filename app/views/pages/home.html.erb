@@ -2,18 +2,16 @@
 <% if user_signed_in? %>
   <% redirect_to homepage_path %>
 <% end %>
-
-<%= image_tag "background-image.jpg", class:"background-image" %>
-  <div class="banner">
-    <div class="tag-line">
-      <%= image_tag "angel-test.png"%>
-      <h2>Helping women feel safe in their city.</h2>
-      <p>Safe route planning. Safe places. Advice.</p>
-    </div>
-    <div class="image">
-      <%= image_tag "banner-image.jpg", class:"banner-image" %>
-    </div>
+<div class="banner">
+  <div class="tag-line">
+    <%= image_tag "angel-test.png"%>
+    <h2>Helping women feel safe in their city.</h2>
+    <p>Safe route planning. Safe places. Advice.</p>
   </div>
+  <div class="image">
+    <%= image_tag "banner-image.jpg", class:"banner-image" %>
+  </div>
+</div>
 <div class="container">
   <div class="visitor-page-info my-5">
     <div class="route-planning-info d-flex justify-content-start align-items-center">
