@@ -1,15 +1,22 @@
 <div class="report-pages">
   <h3 class="text-center py-4">Add a new report</h3>
 
-  <div class="container reports-form w-75 py-4">
-    <%= simple_form_for(@report) do |f|%>
-      <%= f.input :report_type %>
-      <%= f.input :location %>
-      <%= f.input :description %>
-      <%= f.submit %>
-    <% end %>
+  <div class="container reports-form w-75 py-4 shadow-lg">
+    <div data-controller='report'>
+      <%= simple_form_for(@report) do |f|%>
+        <%= f.input :did_it_happen_to_you, :collection => %w[Yes No], prompt: "Yes or No"%>
+        <%= f.input :report_type, :collection => ["Verbal harassment", "Physical harassment", "Visual harassment", "Stalking", "Cyber harassment", "Discriminatory harassment"], prompt: "Select one",
+                    input_html: {data: {action: "change->report#changeDescriptionOptions"}}%>
+        <%= f.input :location, :placeholder => 'i.e. Old Street station EC1' %>
+        <%= f.input :description, input_html: {data: {
+          report_target: "description"
+        }}, :placeholder => 'i.e. catcalling...' %>
+        <%= f.submit class:"btn btn-dark rounded-4" %>
+      <% end %>
+    </div>
   </div>
 
-  <p class="px-4 mt-4"><%= link_to "Back", reports_path, class:"btn btn-light" %></p>
-  <p class="px-4"><%= link_to "Home", root_path, class:"btn btn-info" %></p>
+<div class="container mt-5">
+  <p class="px-4 mt-4"><%= link_to "Back", homepage_path, class:"btn btn-dark rounded-4" %></p>
+  </div>
 </div>
