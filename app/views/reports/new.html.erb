@@ -8,6 +8,7 @@
         <%= f.input :report_type, :collection => ["Verbal harassment", "Physical harassment", "Visual harassment", "Stalking", "Cyber harassment", "Discriminatory harassment"], prompt: "Select one",
                     input_html: {data: {action: "change->report#changeDescriptionOptions"}}%>
         <%= f.input :location, :placeholder => 'i.e. Old Street station EC1' %>
+        <%= f.input :date_and_time %>
         <%= f.input :description, input_html: {data: {
           report_target: "description"
         }}, :placeholder => 'i.e. catcalling...' %>
