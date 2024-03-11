@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h1>Communities</h1>
+
+ <% @communities.each do |community| %>
+    <div class="btn btn-dark rounded-4 w-100 p-3 my-3">
+      <p><%= link_to community.name, community %></p>
+    </div>
+ <% end %>
+
+    <div class="btn btn-light rounded-4 w-50 p-3 my-3">
+      <p><%= link_to "Back", homepage_path %></p>
+    </div>
+
+</div>

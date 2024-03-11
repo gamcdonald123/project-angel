@@ -47,3 +47,12 @@ SafePlace.create!(name: "St Leonard's Hospital", latitude: 51.533977813717286, l
 
 
 puts "Seeding completed"
+
+
+puts "Creating 3 communities"
+
+Community.create!(name: "Tips & Tricks")
+
+Community.create!(name: "Safety First")
+
+Community.create!(name: "Neighbourhood Watch")
