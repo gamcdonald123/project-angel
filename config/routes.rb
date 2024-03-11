@@ -19,6 +19,7 @@ resources :chatrooms do
   resources :messages, only: :create
 end
 get "map", to: "pages#map"
+get "map/token", to: "pages#get_map_token"
 get "homepage", to: "pages#app"
 
 end

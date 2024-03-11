@@ -12,10 +12,11 @@
               <br>
               <%= link_to 'Report', new_report_path, class: "color"%> </div>
 
-              <div class="btn btn-light p-2 border small-button mt-3">
+              <%= link_to map_path({path: true}), id:'get-home', class: "btn btn-light p-2 border small-button mt-3" do %>
                 <img src="<%= image_path('icons8-home-50.png') %>"/>
                   <br>
-                   Go home</div>
+                   Go home
+              <% end %>
                 <div class="btn btn-light p-2 border small-button mt-3">
                   <img src="<%= image_path('icons8-journey-50.png')%>"/>
                     <br>
