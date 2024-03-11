@@ -11,7 +11,6 @@ export default class extends Controller {
   connect() {
 
     this.geoLocate()
-    console.log(this.current_position)
 
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -19,7 +18,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [-0.15, 51.500394],
-      zoom: 12
+      zoom: 16
     });
 
     this.#addMarkersToMap()
@@ -93,5 +92,10 @@ export default class extends Controller {
     .then((data) => {
       console.log(data);
     });
+  }
+
+  directionsTest() {
+    let url = "https://api.mapbox.com/directions/v5/driving/{coordinates}"
+    fetch(url)
   }
 }

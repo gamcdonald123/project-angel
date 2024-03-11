@@ -1,22 +1,25 @@
  <div class="container">
-    <div class="small-map p-3">
-      <%= render "map" %>
+    <div class="small-map">
+      <a href="<%= map_path %>">
+        <%= render "map" %>
+      </a>
     </div>
       <div class="center">
         <div class="row">
           <div class="button-container">
-            <div class="btn btn-light p-2 border small-button">
+            <div class="btn btn-light p-2 border small-button mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               <img src="<%= image_path('icons8-danger-50.png') %>"/>
-                <br>
-                  Report</div>
-              <div class="btn btn-light p-2 border small-button mx-3">
+              <br>
+              <%= link_to 'Report', new_report_path, class: "color"%> </div>
+
+              <div class="btn btn-light p-2 border small-button mt-3">
                 <img src="<%= image_path('icons8-home-50.png') %>"/>
                   <br>
-                    home</div>
-                <div class="btn btn-light p-2 border small-button">
+                   Go home</div>
+                <div class="btn btn-light p-2 border small-button mt-3">
                   <img src="<%= image_path('icons8-journey-50.png')%>"/>
                     <br>
-                  Plan</div>
+                  plan</div>
             </div>
         </div>
       </div>

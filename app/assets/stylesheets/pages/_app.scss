@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 100px;
 }
 
 .button-container {
@@ -34,8 +34,9 @@ img {
 
 .small-button {
   width: 80px;  /* Adjusts button width */
-  height: 60px;  /* Adjusts button height */
+  height: 85px;  /* Adjusts button height */
   display: flex;
+  margin: 10px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -46,11 +47,20 @@ img {
 .small-button img {
   width: 26px;  /* Adjusts image width */
   height: 26px;  /* Adjusts image height */
+  margin-bottom: 5px;
 }
 
 .small-map {
   width: 400px !important;  /* Adjust as needed */
-  height: 600px !important;  /* Adjust as needed */
+  height: 590px !important;  /* Adjust as needed */
+  margin-left: 1px;
+  padding-top: 20px;
+  .map-partial {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    justify-content: center;
+  }
 }
 
 .button-sos {
@@ -119,4 +129,17 @@ img {
 
 .min-height {
   min-height: calc(100vh - 130px);
+}
+
+
+// #map-app {
+//   margin: 0 auto;
+//   .map-partial {
+//     width: 100%;
+//     height: 80%;
+//   }
+// }
+
+.color {
+  color: black;
 }
