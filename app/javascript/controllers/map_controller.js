@@ -3,41 +3,51 @@ import mapboxgl from 'mapbox-gl'
 
 export default class extends Controller {
   static values = {
-    apiKey: String,
-    markers: Array
+    markers: Array,
+    end: Object
   }
 
-  connect() {
+  async connect() {
+    const resp = await fetch('/map/token');
+    const data = await resp.json();
+    this.token = data.token;
 
-    this.geoLocate()
+    this.getCoords();
+    // define current marker instance variable
+    this.currentUserMarker;
+    setTimeout(() => {
+      const {latitude, longitude} = this.coords;
+      mapboxgl.accessToken = this.token;
 
-    console.log(window.globalCurrentLongitude);
-    console.log(window.globalCurrentLatitude);
+      this.map = new mapboxgl.Map({
+        container: this.element,
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [-0.15, 51.500394],
+        zoom: 16
+      });
+      this.map.setCenter([longitude, latitude]);
+      this.currentUserMarker = new mapboxgl.Marker()
+      .setLngLat([longitude, latitude])
+      .addTo(this.map);
 
-    mapboxgl.accessToken = this.apiKeyValue
+      this.#addMarkersToMap();
+      let toHome = false;
+      if ((window.location.search).match(/\?path=(true|false)/)) {
+        toHome = (window.location.search).match(/\?path=(true|false)/)[1] === 'true';
+      }
+      if (toHome) {
+        this.getHome()
+      }
 
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v12",
-      center: [-0.15, 51.500394],
-      zoom: 16
-    });
-
-    // this.#addMarkersToMap()
-    // this.#fitMapToMarkers()
-    // console.log(this.geoLocate())
-    let start = "-0.07707799702848642,51.53281557674937"
-    let end = "-0.1530621981637358,51.52629852471669"
-    this.getRoute()
-
+      setInterval(() => {
+        this.getCoords();
+      }, 5000);
+    }, 400);
 
   }
 
   #addMarkersToMap() {
-
-
-    this.geoLocate()
-
+    // add user position marker
     this.markersValue.forEach((marker) => {
 
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
@@ -46,49 +56,31 @@ export default class extends Controller {
       customMarker.innerHTML = marker.marker_html
 
       new mapboxgl.Marker(customMarker)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map);
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
+      .addTo(this.map);
     });
-
-    // this.current_position = this.geoLocate()
-
-    // new mapboxgl.Marker().setLngLat([this.geoLocate])
   }
 
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-
-    // this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-  }
-
-  geoLocate(start, end) {
-
+  getCoords() {
     navigator.geolocation.getCurrentPosition((data) => {
-
-      const { longitude, latitude } = data.coords;
-      this.map.setCenter([longitude, latitude]);
-      new mapboxgl.Marker()
-        .setLngLat([longitude, latitude])
-        .addTo(this.map);
-        console.log(data.coords.latitude)
-        console.log(data.coords.longitude)
-        // console.log({ longitude, latitude });
-
-        window.globalCurrentLongitude = longitude;
-        window.globalCurrentLatitude = latitude;
-    });
+      this.coords = data.coords;
+      if (this.map) {
+        this.map.setCenter([this.coords.longitude, this.coords.latitude]);
+        this.currentUserMarker.remove();
+        this.currentUserMarker = new mapboxgl.Marker()
+          .setLngLat([this.coords.longitude, this.coords.latitude])
+          .addTo(this.map);
+      }
+    })
   }
 
-  getRoute() {
-
-    console.log("Routing");
-
-    const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA"
+  async getHome() {
+    const { longitude, latitude } =  this.coords;
+    // const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA";
 
     const base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
-    const url = `${base_url}-0.07707799702848642,51.53281557674937;-0.1530621981637358,51.52629852471669?steps=true&geometries=geojson&access_token=${accessToken}`
+    const url = `${base_url}${[longitude]},${[latitude]};${this.endValue.lon},${this.endValue.lat}?steps=true&geometries=geojson&access_token=${this.token}`
     let geojson = {}
     fetch(url)
       .then(response => response.json())
@@ -105,65 +97,65 @@ export default class extends Controller {
         }
       })
 
-      // if the route already exists on the map, we'll reset it using setData
+    // if the route already exists on the map, we'll reset it using setData
 
-      this.map.on('load', () => {
-        if (this.map.getSource('route')) {
-        this.map.getSource('route').setData(geojson);
-        }
-        // otherwise, we'll make a new request
-        else {
-          this.map.addLayer({
-            id: 'route',
-            type: 'line',
-            source: {
-              type: 'geojson',
-              data: geojson
-            },
-            layout: {
-              'line-join': 'round',
-              'line-cap': 'round'
-            },
-            paint: {
-              'line-color': '#3887be',
-              'line-width': 5,
-              'line-opacity': 0.75
-            }
-          });
-        }
-      })
-      this.map.on('load', () => {
-        // make an initial directions request that
-        // starts and ends at the same location
-        // getRoute(start);
-
-        // Add starting point to the map
+    this.map.on('load', () => {
+      if (this.map.getSource('route')) {
+      this.map.getSource('route').setData(geojson);
+      }
+      // otherwise, we'll make a new request
+      else {
         this.map.addLayer({
-          id: 'point',
-          type: 'circle',
+          id: 'route',
+          type: 'line',
           source: {
             type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [
-                {
-                  type: 'Feature',
-                  properties: {},
-                  geometry: {
-                    type: 'Point',
-                    // coordinates: start
-                  }
-                }
-              ]
-            }
+            data: geojson
+          },
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
           },
           paint: {
-            'circle-radius': 10,
-            'circle-color': '#3887be'
+            'line-color': '#3887be',
+            'line-width': 5,
+            'line-opacity': 0.75
           }
         });
-        // this is where the code from the next step will go
+      }
+    })
+    this.map.on('load', () => {
+      // make an initial directions request that
+      // starts and ends at the same location
+      // getRoute(start);
+
+      // Add starting point to the map
+      this.map.addLayer({
+        id: 'point',
+        type: 'circle',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Point',
+                  // coordinates: start
+                }
+              }
+            ]
+          }
+        },
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#3887be'
+        }
       });
-    }
+      // this is where the code from the next step will go
+    });
+  }
 
 }
