@@ -1,17 +1,17 @@
-<div class="report-pages">
+<div class="report-pages px-2">
   <h3 class="text-center py-4">Add a new report</h3>
 
   <div class="container reports-form py-4 shadow-lg">
     <div data-controller='report'>
       <%= simple_form_for(@report) do |f|%>
         <%= f.input :did_it_happen_to_you, :collection => %w[Yes No], prompt: "Yes or No"%>
-        <%= f.input :report_type, :collection => ["Verbal harassment", "Physical harassment", "Visual harassment", "Stalking", "Cyber harassment", "Discriminatory harassment"], prompt: "Select one",
+        <%= f.input :report_type, label:"What would you like to report?", :collection => ["Verbal harassment", "Physical harassment", "Visual harassment", "Stalking", "Cyber harassment", "Discriminatory harassment"], prompt: "Select one",
                     input_html: {data: {action: "change->report#changeDescriptionOptions"}}%>
         <%= f.input :location, :placeholder => 'i.e. Old Street station EC1' %>
-        <%= f.input :date_and_time %>
+        <%= f.input :date_and_time, label:"When did the incident occur?", html5: true %>
         <%= f.input :description, input_html: {data: {
           report_target: "description"
-        }}, :placeholder => 'i.e. catcalling...' %>
+        }}, :placeholder => 'i.e. catcalling...'%>
         <%= f.submit value:"Report", class:"btn btn-dark rounded-4 w-100"%>
       <% end %>
     </div>
