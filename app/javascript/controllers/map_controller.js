@@ -12,6 +12,9 @@ export default class extends Controller {
 
     this.geoLocate()
 
+    console.log(window.globalCurrentLongitude);
+    console.log(window.globalCurrentLatitude);
+
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -68,30 +71,23 @@ export default class extends Controller {
         .addTo(this.map);
         console.log(data.coords.latitude)
         console.log(data.coords.longitude)
+        // console.log({ longitude, latitude });
+
+        window.globalCurrentLongitude = longitude;
+        window.globalCurrentLatitude = latitude;
     });
   }
 
-  directions() {
+  getRoute(end) {
 
     const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA"
 
-    let base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
+    let start = "-0.07707799702848642,51.53281557674937"
+    // let end = "-0.1530621981637358,51.52629852471669"
 
-    let start_lon = -0.07698677948602754
-    let start_lat = 51.532853874682786
-    let end_lon = -0.077315
-    let end_lat = 51.524187
+    const base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
 
-    let url = base_url + start_lon + "," + start_lat + ";" + end_lon + "," + end_lat + "?access_token=" + accessToken
 
-    console.log(url);
-
-    // Use URI to get the directions
-    fetch(url)
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data);
-    });
   }
 
   directionsTest() {
