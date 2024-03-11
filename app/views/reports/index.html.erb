@@ -3,9 +3,10 @@
 
   <% @reports.each do |report| %>
     <div class="container reports-list px-4">
-      <p class="pt-2"><strong>Report Type: </strong><%= report.report_type %></p>
-      <p><strong>Location: </strong><%= report.location %></p>
-      <p class="pb-2"><strong>Description: </strong><%= report.description %></p>
+      <p class="pt-2 text-start"><strong>Report Type: </strong><%= report.report_type %></p>
+      <p class="text-start"><strong>Location: </strong><%= report.location %></p>
+      <p class="text-start"><strong>Time of incident: </strong><%= report.date_and_time %></p>
+      <p class="pb-2 text-start"><strong>Description: </strong><%= report.description %></p>
     </div>
   <% end %>
 
