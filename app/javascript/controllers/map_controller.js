@@ -7,7 +7,6 @@ export default class extends Controller {
     markers: Array
   }
 
-
   connect() {
 
     this.geoLocate()
@@ -24,12 +23,12 @@ export default class extends Controller {
       zoom: 16
     });
 
-    this.#addMarkersToMap()
+    // this.#addMarkersToMap()
     // this.#fitMapToMarkers()
     // console.log(this.geoLocate())
     let start = "-0.07707799702848642,51.53281557674937"
     let end = "-0.1530621981637358,51.52629852471669"
-    this.getRoute(start)
+    this.getRoute()
 
 
   }
@@ -84,15 +83,18 @@ export default class extends Controller {
 
   getRoute() {
 
+    console.log("Routing");
+
     const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA"
 
     const base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
     const url = `${base_url}-0.07707799702848642,51.53281557674937;-0.1530621981637358,51.52629852471669?steps=true&geometries=geojson&access_token=${accessToken}`
-    const geojson = {}
+    let geojson = {}
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-        let route = data.geometry.coordinates
+        // console.log(data.routes[0].geometry);
+        let route = data.routes[0].geometry.coordinates
         geojson = {
           type: 'Feature',
           properties: {},
@@ -105,62 +107,63 @@ export default class extends Controller {
 
       // if the route already exists on the map, we'll reset it using setData
 
-      if (map.getSource('route')) {
-        map.getSource('route').setData(geojson);
-      }
-      // otherwise, we'll make a new request
-      else {
-        map.addLayer({
-          id: 'route',
-          type: 'line',
+      this.map.on('load', () => {
+        if (this.map.getSource('route')) {
+        this.map.getSource('route').setData(geojson);
+        }
+        // otherwise, we'll make a new request
+        else {
+          this.map.addLayer({
+            id: 'route',
+            type: 'line',
+            source: {
+              type: 'geojson',
+              data: geojson
+            },
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            paint: {
+              'line-color': '#3887be',
+              'line-width': 5,
+              'line-opacity': 0.75
+            }
+          });
+        }
+      })
+      this.map.on('load', () => {
+        // make an initial directions request that
+        // starts and ends at the same location
+        // getRoute(start);
+
+        // Add starting point to the map
+        this.map.addLayer({
+          id: 'point',
+          type: 'circle',
           source: {
             type: 'geojson',
-            data: geojson
-          },
-          layout: {
-            'line-join': 'round',
-            'line-cap': 'round'
+            data: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
+                  properties: {},
+                  geometry: {
+                    type: 'Point',
+                    // coordinates: start
+                  }
+                }
+              ]
+            }
           },
           paint: {
-            'line-color': '#3887be',
-            'line-width': 5,
-            'line-opacity': 0.75
+            'circle-radius': 10,
+            'circle-color': '#3887be'
           }
         });
-
+        // this is where the code from the next step will go
+      });
     }
 
-    map.on('load', () => {
-      // make an initial directions request that
-      // starts and ends at the same location
-      getRoute(start);
-
-      // Add starting point to the map
-      map.addLayer({
-        id: 'point',
-        type: 'circle',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [
-              {
-                type: 'Feature',
-                properties: {},
-                geometry: {
-                  type: 'Point',
-                  coordinates: start
-                }
-              }
-            ]
-          }
-        },
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#3887be'
-        }
-      });
-      // this is where the code from the next step will go
-    });
-  }
 }
