@@ -4,4 +4,20 @@
 @import "form_legend_clear";
 @import "navbar";
 @import "banner";
-@import "report"
+@import "report";
+@import "show";
+
+#communities {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#community_name p {
+  font-size:larger;
+  margin-top: 5px;
+}
+
+#back_button p{
+  font-size: larger;
+  margin-top: 7px;
+}
