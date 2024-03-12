@@ -45,5 +45,10 @@ SafePlace.create!(name: "Angela's place", latitude: 51.55283, longitude: 0.07288
 
 SafePlace.create!(name: "St Leonard's Hospital", latitude: 51.533977813717286, longitude: -0.07677840204843199)
 
+puts "Creating 3 chat rooms"
+
+Chatroom.create(name: "Tips & tricks")
+Chatroom.create(name: "Places to avoid")
+Chatroom.create(name: "Safe places")
 
 puts "Seeding completed"
