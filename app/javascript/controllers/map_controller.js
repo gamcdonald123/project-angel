@@ -52,7 +52,7 @@ export default class extends Controller {
     // add user position marker
     Object.values(coordinates).forEach((marker) => {
 
-      console.log(marker);
+      // console.log(marker);
 
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
 
@@ -182,15 +182,18 @@ export default class extends Controller {
 
     this.getCoords()
 
+    // console.log(this.coords);
+
     setTimeout(() => {
       const {latitude, longitude} = this.coords;
+      console.log(latitude, longitude);
       // create new variable with last month's date in the format YYYY-MM
       let date = new Date().getFullYear() + "-" + (new Date().getMonth() - 1);
       let category = "violent-crime"
 
       let url = `${base_url}lat=${latitude.toFixed(4)}&lng=${longitude.toFixed(4)}&date=${date}&category=${category}`;
 
-      console.log(url);
+      // console.log(url);
 
       fetch(url)
         .then(response => response.json())
