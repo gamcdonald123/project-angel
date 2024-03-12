@@ -7,3 +7,19 @@
 @import "report";
 @import "chatroom";
 @import "message";
+@import "show";
+
+#communities {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#community_name p {
+  font-size:larger;
+  margin-top: 5px;
+}
+
+#back_button p{
+  font-size: larger;
+  margin-top: 7px;
+}
