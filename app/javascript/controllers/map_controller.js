@@ -22,10 +22,10 @@ export default class extends Controller {
       this.map = new mapboxgl.Map({
         container: this.element,
         style: "mapbox://styles/mapbox/streets-v12",
-        center: [-0.15, 51.500394],
+        center: [longitude, latitude],
         zoom: 16
       });
-      this.map.setCenter([longitude, latitude]);
+      // this.map.setCenter([longitude, latitude]);
       this.currentUserMarker = new mapboxgl.Marker()
       .setLngLat([longitude, latitude])
       .addTo(this.map);
@@ -63,6 +63,19 @@ export default class extends Controller {
   }
 
   getCoords() {
+    navigator.geolocation.getCurrentPosition((data) => {
+      this.coords = data.coords;
+      if (this.map) {
+        // this.map.setCenter([this.coords.longitude, this.coords.latitude]);
+        this.currentUserMarker.remove();
+        this.currentUserMarker = new mapboxgl.Marker()
+          .setLngLat([this.coords.longitude, this.coords.latitude])
+          .addTo(this.map);
+      }
+    })
+  }
+
+  centerMap() {
     navigator.geolocation.getCurrentPosition((data) => {
       this.coords = data.coords;
       if (this.map) {
