@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :reports
-  has_many :posts, through: :communities
+  has_many :posts
+  has_many :communities, through: :posts
   has_many :messages
   has_one_attached :photo
+  has_many :comments
+  has_many :comments, through: :posts
 end
