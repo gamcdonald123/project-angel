@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+<<<<<<< HEAD
 resources :reports, only: %i[index show new create]
 resources :safe_places, only: %i[index show]
 resources :chatrooms do
@@ -24,5 +25,24 @@ resources :profiles, only: %i[show edit update]
 get "map", to: "pages#map"
 get "map/token", to: "pages#get_map_token"
 get "homepage", to: "pages#app"
+=======
+
+  resources :reports, only: %i[index show new create]
+  resources :safe_places, only: %i[index show]
+  resources :communities, only: %i[index show] do
+    resources :posts, only: %i[create]
+  end
+  resources :posts, only: %i[show] do
+    resources :comments, only: %i[create]
+  end
+
+  resources :chatrooms do
+    resources :messages, only: :create
+  end
+  get "map", to: "pages#map"
+  get "map/token", to: "pages#get_map_token"
+  get "homepage", to: "pages#app"
+
+>>>>>>> 1b80e6f3545c56a968ca19846fe08b3439f6ce7a
 
 end

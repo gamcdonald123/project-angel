@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    <h1 id="community_name"><%= @community.name %></h1>
+
+    <% @community.posts.each do |post| %>
+
+      <%= link_to post_path(post) do %>
+      <%# This posts class is also used in the posts show view %>
+      <div class="posts">
+
+        <p id="title"><%= post.title %></p>
+        <p id="content"><%= post.content.truncate(50) %></p>
+
+        </div>
+      <% end %>
+    <% end %>
+
+
+<br>
+<br>
+
+<div class="btn btn-light w-100 rounded-4 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_button">
+  <p>Add Post</p>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">What would you like to say?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <%= simple_form_for [@community, @post] do |f| %>
+          <%= f.input :title %>
+          <%= f.input :content %>
+          <%= f.button :submit, class: "btn btn-dark rounded-4" %>
+        <% end %>
+
+
+      </div>
+      <%# <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> %>
+    </div>
+  </div>
+</div>
+
+<%= link_to communities_path do %>
+  <div class="btn btn-dark w-100 rounded-4">
+    <p class="h6 p-3">Back</p>
+  </div>
+<% end %>
+
+
+
+</div>
+</div>
+</div>

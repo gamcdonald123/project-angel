@@ -40,3 +40,15 @@ h1{
   margin-top: 20px;
   margin-left: 20px;
 }
+
+#instructions {
+  position: absolute;
+  margin: 20px;
+  width: 50%;
+  top: 0;
+  bottom: 20%;
+  padding: 20px;
+  background-color: #fff;
+  overflow-y: scroll;
+  font-family: sans-serif;
+}
