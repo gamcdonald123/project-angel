@@ -17,15 +17,20 @@ Rails.application.routes.draw do
   resources :reports, only: %i[index show new create]
   resources :safe_places, only: %i[index show]
   resources :communities, only: %i[index show] do
-    resources :posts
+  resources :posts
+  end
+  resources :users, only: :show do
+    resources :chatrooms, only: :create do
+      resources :messages, only: :create
+    end
   end
 
-  resources :chatrooms do
+  resources :chatrooms, except: :create do
     resources :messages, only: :create
   end
-get "map", to: "pages#map"
-get "map/token", to: "pages#get_map_token"
-get "homepage", to: "pages#app"
 
-
+  get "map", to: "pages#map"
+  get "map/token", to: "pages#get_map_token"
+  get "homepage", to: "pages#app"
+  get "userlist", to: "pages#userlist"
 end

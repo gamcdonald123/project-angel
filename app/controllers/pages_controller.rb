@@ -6,6 +6,9 @@ class PagesController < ApplicationController
     redirect_to homepage_path if user_signed_in?
   end
 
+  def userlist
+  end
+
   def map
     @crimes = Crime.all
     @user = current_user
