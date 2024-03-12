@@ -12,6 +12,30 @@
             <p><%= @post.created_at.strftime("%d %B %Y %H:%M") %> </p>
           </div>
              <div class="add-cmnt btn"><%= image_tag 'comment' %></div>
+
+
+          <div class="container">
+
+            <div class="comments-container p-3">
+              <% @post.comments.each do |comment| %>
+                <div class="text-box-comments">
+                  <%= comment.content %>
+                  <div class="d-flex">
+                   <p>Sent by <%= comment.user.first_name %> </p>
+                   <p><%= comment.created_at.strftime("%d %B %Y %H:%M") %> </p>                  </div>
+                </div>
+              <% end %>
+            </div>
+
+
+
+          <%= simple_form_for [@post, @comment] do |f| %>
+          <%= f.input :content, label: false, placeholder: "Add a comment" %>
+          <%= f.submit "Submit", class: "btn btn-dark rounded-4 w-75 ml-5 mb-4" %>
+          <% end %>
+
+          </div>
+
         </div>
 
         <div class="btn btn-dark rounded-4 w-100 p-2 my-5" id="back_button">

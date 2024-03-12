@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
     t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
     t.index ["user_id"], name: "index_chatroom_users_on_user_id"
   end
-
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -61,6 +60,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
     t.index ["receiver_id"], name: "index_chatrooms_on_receiver_id"
     t.index ["sender_id"], name: "index_chatrooms_on_sender_id"
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
 
   create_table "communities", force: :cascade do |t|
     t.string "name"
@@ -145,6 +155,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
   add_foreign_key "chatroom_users", "users"
   add_foreign_key "chatrooms", "users", column: "receiver_id"
   add_foreign_key "chatrooms", "users", column: "sender_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "communities"

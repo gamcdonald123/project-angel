@@ -14,12 +14,12 @@
   flex-direction: column;
   justify-content: left;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .posts:hover {
-  background-color: rgb(242, 242, 242);
+  // background-color: rgb(242, 242, 242);
   background-image: linear-gradient(rgb(249, 230, 251),rgb(168, 168, 168));
 }
 
@@ -34,7 +34,8 @@
 }
 
 #content {
-  font-size: 18px;
+  font-size: 16px;
+  font-style: italic;
 }
 
 
@@ -47,4 +48,11 @@
 
 #back_button {
   color: white;
+  font-size: 16px;;
+}
+
+#add_button p {
+  color: black;
+  font-size: 16px;
+  margin-top: 12px;
 }
