@@ -1,6 +1,11 @@
-<h2>hello</h2>
 
-<% @user.photo %>
-<p>Name: <%= @user.email %></p>
+<div class="container profile-page">
 
-<p>About: <%= @profile.about %></p>
+  <div class="profile-info my-4">
+    <p><strong>First name: </strong><%= @user.first_name %></p>
+    <p><strong>Last name: </strong><%= @user.last_name  %></p>
+    <p><strong>Email: </strong><%= @user.email %></p>
+  </div>
+
+<%= link_to "Back", homepage_path , class:"btn btn-dark w-25 mt-4"%>
+</div>

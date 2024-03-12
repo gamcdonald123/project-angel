@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   after_create :create_user_profile
 
-  private
+private
 
   def create_user_profile
     create_profile
