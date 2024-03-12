@@ -18,6 +18,9 @@ resources :safe_places, only: %i[index show]
 resources :chatrooms do
   resources :messages, only: :create
 end
+
+resources :profiles, only: %i[show edit update]
+
 get "map", to: "pages#map"
 get "map/token", to: "pages#get_map_token"
 get "homepage", to: "pages#app"
