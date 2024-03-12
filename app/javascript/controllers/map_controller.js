@@ -37,6 +37,8 @@ export default class extends Controller {
       }
       if (toHome) {
         this.getHome()
+        const instructions = document.getElementById('instructions')
+        instructions.classList.remove("d-none")
       }
 
       setInterval(() => {
@@ -61,6 +63,7 @@ export default class extends Controller {
       .addTo(this.map);
     });
   }
+
 
   getCoords() {
     navigator.geolocation.getCurrentPosition((data) => {
@@ -94,12 +97,20 @@ export default class extends Controller {
 
     const base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
     const url = `${base_url}${[longitude]},${[latitude]};${this.endValue.lon},${this.endValue.lat}?steps=true&geometries=geojson&access_token=${this.token}`
+    let steps = []
+    let duration = 0;
     let geojson = {}
     fetch(url)
       .then(response => response.json())
       .then((data) => {
         // console.log(data.routes[0].geometry);
+        // console.log(`Data:`);
+        // console.log(data);
         let route = data.routes[0].geometry.coordinates
+        // console.log(route);
+        steps = data.routes[0].legs[0].steps;
+        // console.log(steps);
+        // console.log(duration);
         geojson = {
           type: 'Feature',
           properties: {},
@@ -108,13 +119,15 @@ export default class extends Controller {
             coordinates: route
           }
         }
+        duration = data.routes[0].duration;
       })
 
-    // if the route already exists on the map, we'll reset it using setData
+      // if the route already exists on the map, we'll reset it using setData
 
     this.map.on('load', () => {
       if (this.map.getSource('route')) {
-      this.map.getSource('route').setData(geojson);
+        console.log(duration);
+        this.map.getSource('route').setData(geojson);
       }
       // otherwise, we'll make a new request
       else {
@@ -136,6 +149,18 @@ export default class extends Controller {
           }
         });
       }
+
+      // get the sidebar and add the instructions
+      const instructions = document.getElementById('instructions');
+
+      let tripInstructions = '';
+      steps.forEach((step) => {
+        tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      })
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        duration / 60
+      )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
+
     })
     this.map.on('load', () => {
       // make an initial directions request that
@@ -169,6 +194,9 @@ export default class extends Controller {
       });
       // this is where the code from the next step will go
     });
+
+    // console.log(data);
+
   }
 
 }
