@@ -213,7 +213,7 @@ export default class extends Controller {
               "longitude": top40crimes[i].location.longitude,
               "latitude": top40crimes[i].location.latitude,
               "month": top40crimes[i].month,
-              "info_window_html": `<div><h3>Crime Details</h3><p><strong>Type:</strong> violent-crime</p><p><strong>Date:</strong> 2024-01</p></div>`,
+              "info_window_html": `<div><h5>Crime Details</h5><p>🧾 Violent crime</p><p>📆 2024-01</p></div>`,
               "marker_html": `<img height="48" width="48" alt="Logo" src="/assets/crime_marker-bd3bed9d884facf2ed0840fe5d0f594e17713625d4a0979f237aa0f184333fd1.png" />`
             };
           }
