@@ -22,13 +22,13 @@ puts "Seeded database with police API"
 
 puts "Creating logins for team"
 
-User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Nicole")
+User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Nicole", home_longitude: -0.06362942153767116, home_latitude: 51.499646012648455)
 
-User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mirela")
+User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mirela", home_longitude: -0.20725414692570132, home_latitude: 51.51226541189122)
 
-User.create(email: "tony@tony.com", password: "password", first_name: "Tony", last_name: "Tony")
+User.create(email: "tony@tony.com", password: "password", first_name: "Tony", last_name: "Tony", home_longitude: -0.13857370577050818, home_latitude: 51.54714321927489)
 
-User.create(email: "guy@guy.com", password: "password", first_name: "Guy", last_name: "Guy")
+User.create(email: "guy@guy.com", password: "password", first_name: "Guy", last_name: "Guy", home_longitude: -0.09346231382179586, home_latitude: 51.54364009099498)
 
 
 puts "Creating 6 safe places"
@@ -45,6 +45,11 @@ SafePlace.create!(name: "Angela's place", latitude: 51.55283, longitude: 0.07288
 
 SafePlace.create!(name: "St Leonard's Hospital", latitude: 51.533977813717286, longitude: -0.07677840204843199)
 
+puts "Creating 3 chat rooms"
+
+Chatroom.create(name: "Tips & tricks")
+Chatroom.create(name: "Places to avoid")
+Chatroom.create(name: "Safe places")
 
 puts "Seeding completed"
 

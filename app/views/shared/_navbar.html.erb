@@ -1,15 +1,15 @@
 <div class="" style="height: 130px"></div>
 <div class="mobile-nav">
-  <button class="button-sos">SOS</button>
+  <a href="tel:999" class="button-sos">SOS</a>
   <div class="dropdown">
     <button class="dropdown-toggle button-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Menu
     </button>
 
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item text-decoration-none" href="#">Profile</a></li>
-    <li><a class="dropdown-item" href="#">Messages</a></li>
-    <li><%= link_to 'Communities', communities_path %></li>
+    <li><a class="dropdown-item" href="#">Profile</a></li>
+    <li> <%=link_to "Messages", chatrooms_path, class:"dropdown-item"%></li>
+    <li> <%=link_to "Communities", communities_path, class:"dropdown-item"%></li>
     <li><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
   </ul>
   </div>

@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def map
     @crimes = Crime.all
+    @user = current_user
 
     crime_markers = @crimes.map do |crime|
       {
@@ -31,6 +32,12 @@ class PagesController < ApplicationController
       }
     end
     @markers = crime_markers + safe_place_markers
+
+    @home_location = { lon: current_user.home_longitude, lat: current_user.home_latitude }
+  end
+
+  def get_map_token
+    render json: {token: ENV['MAPBOX_API_KEY']}
   end
 
   def app

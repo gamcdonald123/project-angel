@@ -6,7 +6,7 @@
   <div class="tag-line">
     <%= image_tag "angel-test.png"%>
     <h2>Helping women feel safe in their city.</h2>
-    <p>Safe route planning. Safe places. Advice.</p>
+    <p class="fs-2">Safe route planning. Safe places. Advice.</p>
   </div>
   <div class="image">
     <%= image_tag "banner-image.jpg", class:"banner-image" %>
@@ -16,15 +16,15 @@
   <div class="visitor-page-info my-5">
     <div class="route-planning-info d-flex justify-content-start align-items-center">
       <%= image_tag "route-planning.png" %>
-      <p>Map your way from A to B, with intelligently safe routes. Avoid crime spots and quiet streets.</p>
+      <p class="text-start fs-6 ms-2">Map your way from A to B, with intelligently safe routes. Avoid crime spots and quiet streets.</p>
     </div>
     <div class="safe-places-info d-flex justify-content-end align-items-center">
-      <p class="pe-2">Find verified Safe Places. Fast.</p>
+      <p class="me-5 fs-6">Find verified Safe Places. Fast.</p>
       <%= image_tag "safe-place-info.png" %>
     </div>
     <div class="tips-info d-flex justify-content-start align-items-center">
       <%= image_tag "tips-and-tricks.png" %>
-      <p class="px-4">Get tailored tips and tricks for staying safe.</p>
+      <p class="px-4 fs-6 text-start">Get tailored tips and tricks for staying safe.</p>
     </div>
     <%# if there is no user session, display sign up and login buttons %>
     <% if !user_signed_in? %>
