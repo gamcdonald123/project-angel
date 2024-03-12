@@ -51,4 +51,12 @@ Chatroom.create(name: "Tips & tricks")
 Chatroom.create(name: "Places to avoid")
 Chatroom.create(name: "Safe places")
 
+puts "Creating 3 communities"
+
+Community.create!(name: "Tips & Tricks")
+
+Community.create!(name: "Safety First")
+
+Community.create!(name: "Neighbourhood Watch")
+
 puts "Seeding completed"
