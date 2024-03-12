@@ -44,11 +44,15 @@ export default class extends Controller {
       }, 5000);
     }, 400);
 
+    this.getCrimes()
+
   }
 
-  #addMarkersToMap() {
+  #addMarkersToMap(coordinates) {
     // add user position marker
-    this.markersValue.forEach((marker) => {
+    Object.values(coordinates).forEach((marker) => {
+
+      console.log(marker);
 
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
 
@@ -56,7 +60,7 @@ export default class extends Controller {
       customMarker.innerHTML = marker.marker_html
 
       new mapboxgl.Marker(customMarker)
-      .setLngLat([ marker.lng, marker.lat ])
+      .setLngLat([ marker.longitude, marker.latitude ])
       .setPopup(popup)
       .addTo(this.map);
     });
@@ -89,7 +93,7 @@ export default class extends Controller {
   }
 
   async getHome() {
-    const { longitude, latitude } =  this.coords;
+    const { longitude, latitude } = this.coords;
     // const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA";
 
     const base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
@@ -171,4 +175,51 @@ export default class extends Controller {
     });
   }
 
-}
+  getCrimes() {
+
+    const base_url = "https://data.police.uk/api/crimes-street/all-crime?"
+
+
+    this.getCoords()
+
+    setTimeout(() => {
+      const {latitude, longitude} = this.coords;
+      // create new variable with last month's date in the format YYYY-MM
+      let date = new Date().getFullYear() + "-" + (new Date().getMonth() - 1);
+      let category = "violent-crime"
+
+      let url = `${base_url}lat=${latitude.toFixed(4)}&lng=${longitude.toFixed(4)}&date=${date}&category=${category}`;
+
+      console.log(url);
+
+      fetch(url)
+        .then(response => response.json())
+        .then((data) => {
+          // log the first 40 crimes to console where the category is violent-crime
+          let count = 0;
+          let crimes = [];
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].category === "violent-crime") {
+              crimes.push(data[i]);
+              count++;
+            }
+          }
+          let top40crimes = (crimes.slice(0, 40));
+          // create an object containing all the longitudes and latitudes of the elements in the array top40crimes
+          let coordinates = {};
+          for (let i = 0; i < top40crimes.length; i++) {
+            // add top40crimes.longitude and top40crimes.latitude and month to the coordinates object
+            coordinates[i] = {
+              "longitude": top40crimes[i].location.longitude,
+              "latitude": top40crimes[i].location.latitude,
+              "month": top40crimes[i].month,
+              "info_window_html": `<div><h3>Crime Details</h3><p><strong>Type:</strong> violent-crime</p><p><strong>Date:</strong> 2024-01</p></div>`,
+              "marker_html": `<img height="48" width="48" alt="Logo" src="/assets/crime_marker-bd3bed9d884facf2ed0840fe5d0f594e17713625d4a0979f237aa0f184333fd1.png" />`
+            };
+          }
+          // console.log(coordinates);
+          this.#addMarkersToMap(coordinates);
+        }
+        )}, 500);
+    }
+  }

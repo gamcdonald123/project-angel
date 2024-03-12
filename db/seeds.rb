@@ -4,6 +4,7 @@ Report.destroy_all
 User.destroy_all
 Crime.destroy_all
 SafePlace.destroy_all
+Community.destroy_all
 
 crimes_url = "https://data.police.uk/api/crimes-street/all-crime?poly=51.546767,-0.098853:51.546321,-0.055275:51.520231,-0.079147"
 
