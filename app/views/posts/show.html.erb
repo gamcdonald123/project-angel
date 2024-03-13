@@ -19,7 +19,7 @@
 
           <% if current_user.voted_up_for? @post %>
             <%= link_to like_post_path(@post), data: {turbo_method: :patch} do %>
-              <div class="icon-btn mr-2" id="like"><%= image_tag 'like_button' %></div>
+              <div class="icon-btn mr-2" id="like"><%= image_tag 'like_button.png' %></div>
             <% end %>
           <% else %>
             <%= link_to like_post_path(@post), data: {turbo_method: :patch} do %>
@@ -33,7 +33,7 @@
           </div>
 
             <div data-controller="scroll-down" data-action="click->scroll-down#scrollDown">
-                <div class="icon-btn" id="comment"><%= image_tag 'comment' %></div>
+                <div class="icon-btn" id="comment"><%= image_tag 'comment.png' %></div>
             </div>
 
 
@@ -55,7 +55,7 @@
                   <div class="d-flex justify-content-end mb-2">
                   <% if current_user.voted_up_for? comment %>
                     <%= link_to like_post_comment_path(@post, comment), data: {turbo_method: :patch}, class: "d-flex" do %>
-                      <div class="icon-btn" id="like-response"><%= image_tag 'like_button' %></div>
+                      <div class="icon-btn" id="like-response"><%= image_tag 'like_button.png' %></div>
                       <div class="counter mr-3 mt-1"> <%= comment.votes_for.size %></div>
                     <% end %>
                   <% else %>
