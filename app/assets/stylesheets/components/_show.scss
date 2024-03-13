@@ -14,8 +14,7 @@
   flex-direction: column;
   justify-content: left;
   border-radius: 20px;
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin-bottom: 20px;
   box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -106,4 +105,9 @@
 
 #community_name {
   text-align: center;
+}
+
+.community-btn {
+  width: 67px;
+  height: 50px;
 }
