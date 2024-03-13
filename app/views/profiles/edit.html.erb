@@ -1,0 +1,15 @@
+<div class="container profile-edit mt-4">
+  <h2>Change your details</h2>
+
+  <div class="py-4">
+    <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+      <%= f.submit value:"Update", class:"btn btn-light" %>
+    <% end %>
+  </div>
+
+  <%= link_to "Back", profile_path, class:"btn btn-dark mt-3" %>
+
+</div>
