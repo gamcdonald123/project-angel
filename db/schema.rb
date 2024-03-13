@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+
   create_table "communities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
