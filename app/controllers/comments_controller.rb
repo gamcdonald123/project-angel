@@ -22,6 +22,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find(params[:post_id])
+    comment = Comment.find(params[:id])
+    if current_user.voted_up_for? comment
+      comment.unliked_by current_user
+    else
+      comment.liked_by current_user
+    end
+    redirect_to post_path(@post)
+  end
+
   private
 
   def comment_params

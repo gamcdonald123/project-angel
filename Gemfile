@@ -34,6 +34,9 @@ gem "cloudinary"
 #Geocoder gem install
 gem "geocoder"
 
+#Like_button
+gem 'acts_as_votable'
+
 # Mapbox gem install
 # gem 'mapbox-gl-rails', '~> 2.9'
 
