@@ -279,7 +279,7 @@ export default class extends Controller {
     }
 
   getHospitals(getSafe) {
-      console.log("Running getHospitals()");
+      // console.log("Running getHospitals()");
       this.getCoords()
 
       setTimeout(() => {
@@ -317,8 +317,8 @@ export default class extends Controller {
     }
 
     async getSafe(hospital_longitude, hospital_latitude) {
-      console.log("Running getSafe()");
-      console.log(hospital_longitude, hospital_latitude);
+      // console.log("Running getSafe()");
+      // console.log(hospital_longitude, hospital_latitude);
       this.getCoords()
 
       setTimeout(() => {
@@ -379,7 +379,7 @@ export default class extends Controller {
               )} min 🚶‍♀️ </strong></h5><ol>${tripInstructions}</ol>`;
 
             this.map.on('load', () => {
-              console.log(geojson);
+              // console.log(geojson);
 
               // make an initial directions request that
               // starts and ends at the same location
