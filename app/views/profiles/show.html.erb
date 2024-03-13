@@ -1,14 +1,11 @@
 
 <div class="container profile-page">
 
-  <div class="profile-photo">
-    <% if @user.photo.attached? %>
-      <%= @user.photo %>
-    <% else %>
-      <%= image_tag "blank-profile.png" %>
-    <% end %>
+  <div>
+      <%= image_tag @user.photo, class:"profile-photo" %>
   </div>
-  <div class="profile-info my-4">
+  <div class="line-break"></div>
+  <div class="profile-info">
     <p><strong>First name: </strong><%= @user.first_name %></p>
     <p><strong>Last name: </strong><%= @user.last_name  %></p>
     <p><strong>Email: </strong><%= @user.email %></p>

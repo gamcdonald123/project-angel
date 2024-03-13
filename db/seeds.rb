@@ -23,13 +23,13 @@ puts "Seeded database with police API"
 
 puts "Creating logins for team"
 
-User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Nicole", home_longitude: -0.06362942153767116, home_latitude: 51.499646012648455)
+User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Nicole", home_longitude: -0.06362942153767116, home_latitude: 51.499646012648455, photo: Rails.root.join("app", "assets", "images", "profile-photo-2.jpg").open)
 
-User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mirela", home_longitude: -0.20725414692570132, home_latitude: 51.51226541189122)
+User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mirela", home_longitude: -0.20725414692570132, home_latitude: 51.51226541189122, photo: Rails.root.join("app", "assets", "images", "profile-photo-1.jpg").open)
 
-User.create(email: "tony@tony.com", password: "password", first_name: "Tony", last_name: "Tony", home_longitude: -0.13857370577050818, home_latitude: 51.54714321927489)
+User.create(email: "tony@tony.com", password: "password", first_name: "Tony", last_name: "Tony", home_longitude: -0.13857370577050818, home_latitude: 51.54714321927489, photo: Rails.root.join("app", "assets", "images", "profile-photo-3.jpg").open)
 
-User.create(email: "guy@guy.com", password: "password", first_name: "Guy", last_name: "Guy", home_longitude: -0.09346231382179586, home_latitude: 51.54364009099498)
+User.create(email: "guy@guy.com", password: "password", first_name: "Guy", last_name: "Guy", home_longitude: -0.09346231382179586, home_latitude: 51.54364009099498, photo: Rails.root.join("app", "assets", "images", "profile-photo-4.jpg").open)
 
 
 puts "Creating 6 safe places"
