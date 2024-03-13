@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :messages
   has_one_attached :photo
   has_one :profile
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
   has_many :comments
   has_many :comments, through: :posts
 
