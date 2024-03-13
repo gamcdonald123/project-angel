@@ -1,6 +1,8 @@
 require 'uri'
 
 Report.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 User.destroy_all
 Crime.destroy_all
 SafePlace.destroy_all
