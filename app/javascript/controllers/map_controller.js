@@ -10,6 +10,7 @@ export default class extends Controller {
 
 
   async connect() {
+    // getting mapbox token
     const resp = await fetch('/map/token');
     const data = await resp.json();
     this.token = data.token;
@@ -33,17 +34,21 @@ export default class extends Controller {
       .addTo(this.map);
 
       this.#addMarkersToMap();
-      let toHome = false;
-      if ((window.location.search).match(/\?path=(true|false)/)) {
-        toHome = (window.location.search).match(/\?path=(true|false)/)[1] === 'true';
-      }
-      if (toHome) {
+
+      let toHome = 0;
+
+      if ((window.location.search).substring((window.location.search).length - 1) === "0") {
+        // console.log((window.location.search).substring((window.location.search).length - 1));
         this.getHome()
         const instructions = document.getElementById('instructions')
         instructions.classList.remove("d-none")
       }
+      else if ((window.location.search).substring((window.location.search).length - 1) === "1") {
+        // console.log("Running getSafe()");
+        this.getHospitals(1)
+      }
 
-      this.getHospitals()
+      this.getHospitals(0)
       setInterval(() => {
         this.getCoords();
       }, 5000);
@@ -120,6 +125,7 @@ export default class extends Controller {
   }
 
   async getHome() {
+    // console.log("Running getHome()");
     const { longitude, latitude } = this.coords;
     // const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA";
 
@@ -131,14 +137,8 @@ export default class extends Controller {
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-        // console.log(data.routes[0].geometry);
-        // console.log(`Data:`);
-        // console.log(data);
         let route = data.routes[0].geometry.coordinates
-        // console.log(route);
         steps = data.routes[0].legs[0].steps;
-        // console.log(steps);
-        // console.log(duration);
         geojson = {
           type: 'Feature',
           properties: {},
@@ -154,7 +154,6 @@ export default class extends Controller {
 
     this.map.on('load', () => {
       if (this.map.getSource('route')) {
-        console.log(duration);
         this.map.getSource('route').setData(geojson);
       }
       // otherwise, we'll make a new request
@@ -177,6 +176,7 @@ export default class extends Controller {
           }
         });
       }
+
 
       // get the sidebar and add the instructions
       const instructions = document.getElementById('instructions');
@@ -278,16 +278,14 @@ export default class extends Controller {
         )}, 500);
     }
 
-    getHospitals() {
+  getHospitals(getSafe) {
+      // console.log("Running getHospitals()");
       this.getCoords()
 
       setTimeout(() => {
         const {latitude, longitude} = this.coords;
 
         const base_url = `https://api.mapbox.com/search/searchbox/v1/category/hospital?access_token=pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA&language=en&limit=1&proximity=${longitude},${latitude}`;
-
-        let safePlace_latitude = 0;
-        let safePlace_longitude = 0;
 
         let coordinates = {}
 
@@ -305,31 +303,37 @@ export default class extends Controller {
               "marker_html": `<img height="48" width="48" alt="Logo" src="/assets/hospital.png" />`
             };
 
-          this.#addHospitalsToMap(coordinates);
-          return coordinates;
+            let hospital_longitude = data.features[0].geometry.coordinates[0]
+            let hospital_latitude = data.features[0].geometry.coordinates[1]
 
+          this.#addHospitalsToMap(coordinates);
+          if (getSafe === 1) {
+            this.getSafe(hospital_longitude, hospital_latitude)
+          }
+
+          return coordinates;
         });
       }, 500)
     }
 
-    async getSafe() {
-
-      let coordinates = await this.getHospitals();
-      console.log(coordinates);
+    async getSafe(hospital_longitude, hospital_latitude) {
+      // console.log("Running getSafe()");
+      // console.log(hospital_longitude, hospital_latitude);
       this.getCoords()
 
       setTimeout(() => {
         const { longitude, latitude } = this.coords;
-        console.log(longitude);
 
         const base_url = "https://api.mapbox.com/directions/v5/mapbox/walking/"
-        const url = `${base_url}${[longitude]},${[latitude]};${this.endValue.lon},${this.endValue.lat}?steps=true&geometries=geojson&access_token=${this.token}`
+        const url = `${base_url}${[longitude]},${[latitude]};${hospital_longitude},${hospital_latitude}?steps=true&geometries=geojson&access_token=${this.token}`
+        let steps = []
+        let duration = 0;
         let geojson = {}
         fetch(url)
           .then(response => response.json())
           .then((data) => {
-            // console.log(data.routes[0].geometry);
             let route = data.routes[0].geometry.coordinates
+            steps = data.routes[0].legs[0].steps;
             geojson = {
               type: 'Feature',
               properties: {},
@@ -338,71 +342,76 @@ export default class extends Controller {
                 coordinates: route
               }
             }
-          })
+            duration = data.routes[0].duration;
 
-        // if the route already exists on the map, we'll reset it using setData
-
-        this.map.on('load', () => {
-          if (this.map.getSource('route')) {
-          this.map.getSource('route').setData(geojson);
-          }
-          // otherwise, we'll make a new request
-          else {
-            this.map.addLayer({
-              id: 'route',
-              type: 'line',
-              source: {
-                type: 'geojson',
-                data: geojson
-              },
-              layout: {
-                'line-join': 'round',
-                'line-cap': 'round'
-              },
-              paint: {
-                'line-color': '#3887be',
-                'line-width': 5,
-                'line-opacity': 0.75
+            if (this.map.getSource('route')) {
+              this.map.getSource('route').setData(geojson);
               }
-            });
-          }
-        })
-        this.map.on('load', () => {
-          // make an initial directions request that
-          // starts and ends at the same location
-          // getRoute(start);
-
-          // Add starting point to the map
-          this.map.addLayer({
-            id: 'point',
-            type: 'circle',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'FeatureCollection',
-                features: [
-                  {
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                      type: 'Point',
-                      // coordinates: start
-                    }
+              // otherwise, we'll make a new request
+              else {
+                this.map.addLayer({
+                  id: 'route',
+                  type: 'line',
+                  source: {
+                    type: 'geojson',
+                    data: geojson
+                  },
+                  layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                  },
+                  paint: {
+                    'line-color': '#3887be',
+                    'line-width': 5,
+                    'line-opacity': 0.75
                   }
-                ]
+                });
               }
-            },
-            paint: {
-              'circle-radius': 10,
-              'circle-color': '#3887be'
-            }
-          });
-          // this is where the code from the next step will go
-        });
 
+              const instructions = document.getElementById('instructions');
 
+              let tripInstructions = '';
+              steps.forEach((step) => {
+                tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+              })
+              instructions.innerHTML = `<h5><strong>Trip duration: ${Math.floor(
+                duration / 60
+              )} min 🚶‍♀️ </strong></h5><ol>${tripInstructions}</ol>`;
+
+            this.map.on('load', () => {
+              // console.log(geojson);
+
+              // make an initial directions request that
+              // starts and ends at the same location
+              // getRoute(start);
+
+              // Add starting point to the map
+              this.map.addLayer({
+                id: 'point',
+                type: 'circle',
+                source: {
+                  type: 'geojson',
+                  data: {
+                    type: 'FeatureCollection',
+                    features: [
+                      {
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                          type: 'Point',
+                          // coordinates: start
+                        }
+                      }
+                    ]
+                  }
+                },
+                paint: {
+                  'circle-radius': 10,
+                  'circle-color': '#3887be'
+                }
+              });
+            });
+          })
       }, 500)
-      // const accessToken = "pk.eyJ1IjoiZ2FtY2RvbmFsZDEyMyIsImEiOiJjbHNsc25ybWkwMmJxMm1xb3U2cXhnMGhjIn0.2xgoKDVEBTSGsghazmqAeA";
-
     }
   }
