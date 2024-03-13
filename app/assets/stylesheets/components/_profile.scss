@@ -1,6 +1,8 @@
 .profile-info {
-  background-color: #f19d799c;
-  margin-top: 100px;
+  background-color: white;
+  background-image: linear-gradient(rgb(245, 220, 248),rgb(190, 184, 184));
+  margin: 35px auto;
+  border-radius: 5px;
 }
 
 .profile-info p {
@@ -10,8 +12,18 @@
 }
 
 .profile-photo {
-  width: 300px;
-  height: 300px;
-  margin-top: 20px;
-  border-radius: 10px;;
+  width: 250px;
+  height: 250px;
+  margin: 35px auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.line-break {
+  background-color: rgba(128, 128, 128, 0.74);
+  height: 15px;
+}
+
+.profile-edit {
+  padding: auto 10px;
 }
