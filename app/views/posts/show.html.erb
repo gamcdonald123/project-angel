@@ -23,7 +23,7 @@
             <% end %>
           <% else %>
             <%= link_to like_post_path(@post), data: {turbo_method: :patch} do %>
-              <div class="icon-btn mr-2" id="like"><%= image_tag 'unlike_button' %></div>
+              <div class="icon-btn mr-2" id="like"><%= image_tag 'unlike_button.png' %></div>
             <% end %>
           <% end %>
 
@@ -60,7 +60,7 @@
                     <% end %>
                   <% else %>
                     <%= link_to like_post_comment_path(@post, comment), data: {turbo_method: :patch}, class: "d-flex" do %>
-                      <div class="icon-btn" id="like-response"><%= image_tag 'unlike_button' %></div>
+                      <div class="icon-btn" id="like-response"><%= image_tag 'unlike_button.png' %></div>
                       <div class="counter mr-3 mt-1"> <%= comment.votes_for.size %></div>
                   <% end %>
                   <% end %>
