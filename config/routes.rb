@@ -16,17 +16,20 @@ Rails.application.routes.draw do
 
   resources :reports, only: %i[index show new create]
   resources :safe_places, only: %i[index show]
+
   resources :communities, only: %i[index show] do
-    
-   resources :posts, only: %i[create]
+    resources :posts, only: %i[create]
   end
+
   resources :posts, only: %i[show] do
     resources :comments, only: %i[create]
   end
+
   resources :users, only: :show do
     resources :chatrooms, only: :create do
       resources :messages, only: :create
     end
+  end
 
   resources :chatrooms, except: :create do
     resources :messages, only: :create
