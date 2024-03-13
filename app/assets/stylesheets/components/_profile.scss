@@ -6,5 +6,12 @@
 .profile-info p {
   text-align: start;
   padding-left: 5px;
-  font-size: larger;
+  font-size: 2rem;
+}
+
+.profile-photo {
+  width: 300px;
+  height: 300px;
+  margin-top: 20px;
+  border-radius: 10px;;
 }

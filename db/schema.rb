@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.1].define(version: 2024_03_12_103538) do
-=======
 ActiveRecord::Schema[7.1].define(version: 2024_03_12_111356) do
->>>>>>> 1b80e6f3545c56a968ca19846fe08b3439f6ce7a
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,15 +84,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_111356) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-<<<<<<< HEAD
-  create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "about"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
-=======
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -106,7 +93,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_111356) do
     t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_posts_on_community_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
->>>>>>> 1b80e6f3545c56a968ca19846fe08b3439f6ce7a
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "about"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -155,11 +150,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_111356) do
   add_foreign_key "comments", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-<<<<<<< HEAD
-  add_foreign_key "profiles", "users"
-=======
   add_foreign_key "posts", "communities"
   add_foreign_key "posts", "users"
->>>>>>> 1b80e6f3545c56a968ca19846fe08b3439f6ce7a
+  add_foreign_key "profiles", "users"
   add_foreign_key "reports", "users"
 end
