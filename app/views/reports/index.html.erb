@@ -1,17 +1,37 @@
 <div class="report-pages px-2">
-  <h3 class="text-center py-4">Reports in your area</h3>
+
+<div class="d-flex justify-content-between mt-4 mb-4">
+  <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4"), homepage_path %>
+  <h3 class="mt-2">Reports in your area</h3>
+  <%= link_to(image_tag("add_button.png", alt: "Add a report", class: "d-flex rounded-4"), new_report_path) %>
+</div>
 
   <% @reports.each do |report| %>
-    <div class="container reports-list px-4">
-      <p class="pt-2 text-start"><strong>Report Type: </strong><%= report.report_type %></p>
-      <p class="text-start"><strong>Location: </strong><%= report.location %></p>
-      <p class="text-start"><strong>Time of incident: </strong><%= report.date_and_time %></p>
-      <p class="pb-2 text-start"><strong>Description: </strong><%= report.description %></p>
+
+    <div class="container reports-list px-4 mb-3 border-3">
+
+    <div class="d-flex justify-content-between">
+        <h5 class="pt-3 text-start"><%= image_tag "happened_to_you.png", class: "report-icons" %> <strong><%= report.did_it_happen_to_you %></strong><h5>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <h5 class="text-start"><%= image_tag "report.png", class: "report-icons" %> <strong><%= report.report_type %></strong><h5>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <h6 class="text-start"><%= image_tag "location_icon.png", class: "report-icons" %>  <%= report.location %></h6>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <h6 class="text-start"><%= image_tag "time_icon.png", class: "report-icons" %> <strong><%= report.date_and_time %></strong></h6>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <h6 class="pb-2 text-start"><%= image_tag "write_icon.png", class: "report-icons" %><%= report.description %></h6>
+      </div>
+
     </div>
   <% end %>
 
-<div class="d-flex justify-content-around p-3" >
-  <p class=""><%= link_to "Back", homepage_path, class:"btn btn-dark rounded-4" %></p>
-  <p class=""><%= link_to "Add a report", new_report_path, class:"btn btn-dark rounded-4" %></p>
-</div>
+
 </div>
