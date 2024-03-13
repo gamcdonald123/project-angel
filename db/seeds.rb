@@ -48,9 +48,9 @@ SafePlace.create!(name: "St Leonard's Hospital", latitude: 51.533977813717286, l
 
 puts "Creating 3 chat rooms"
 
-Chatroom.create(name: "Tips & tricks")
-Chatroom.create(name: "Places to avoid")
-Chatroom.create(name: "Safe places")
+Chatroom.create(name: "Tips & tricks", sender_id: 25)
+Chatroom.create(name: "Places to avoid", sender_id: 25)
+Chatroom.create(name: "Safe places", sender_id: 25)
 
 puts "Creating 3 communities"
 
