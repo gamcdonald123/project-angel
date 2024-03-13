@@ -1,8 +1,12 @@
 
 <div class="container profile-page">
 
-  <div>
+  <div class="d-flex justify-content-center">
+    <% if @user.photo.attached? %>
       <%= image_tag @user.photo, class:"profile-photo" %>
+    <% else %>
+     <p>No profile photo added</p>
+    <% end %>
   </div>
   <div class="line-break"></div>
   <div class="profile-info">
