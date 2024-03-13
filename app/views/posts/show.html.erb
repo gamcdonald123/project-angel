@@ -47,13 +47,13 @@
           <%= simple_form_for [@post, @comment] do |f| %>
           <div class="container">
             <%= f.input :content, label: false, placeholder: "Add a comment", input_html: { style: "white-space: pre-wrap; height: auto;" } %>
+            <%= f.submit "Submit", class: "btn btn-dark rounded-4 w-100 mt-3 mb-4" %>
           </div>
-            <%= f.submit "Submit", class: "btn btn-dark rounded-4 w-75 ml-5 my-3" %>
           <% end %>
 
         </div>
 
-        <div class="btn btn-dark rounded-4 w-100 p-2 my-5" id="back_button">
+        <%# <div class="btn btn-dark rounded-4 w-100 p-2 my-5" id="back_button">
           <p><%= link_to "Back", community_path %></p>
         </div>
 
