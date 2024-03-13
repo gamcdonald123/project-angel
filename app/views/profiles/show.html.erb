@@ -1,0 +1,18 @@
+
+<div class="container profile-page">
+
+  <div class="profile-photo rounded">
+    <% if @user.photo.attached? %>
+      <%= image_tag @user.photo %>
+    <% else %>
+      <%= image_tag "blank-profile.png" %>
+    <% end %>
+  </div>
+  <div class="profile-info my-4">
+    <p><strong>First name: </strong><%= @user.first_name %></p>
+    <p><strong>Last name: </strong><%= @user.last_name  %></p>
+    <p><strong>Email: </strong><%= @user.email %></p>
+  </div>
+
+<%= link_to "Back", homepage_path , class:"btn btn-dark w-25 mt-3"%>
+</div>
