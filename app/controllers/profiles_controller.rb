@@ -19,7 +19,8 @@ class ProfilesController < ApplicationController
   private
 
   def set_user
-    @user = current_user
+    @user = User.find(params[:id])
+    #@user = current_user
   end
 
   def user_params

@@ -13,10 +13,19 @@
     <p><strong>First name: </strong><%= @user.first_name %></p>
     <p><strong>Last name: </strong><%= @user.last_name  %></p>
     <p><strong>Email: </strong><%= @user.email %></p>
+    <div class="edit-profile">
+    <button class="btn edit"><%= link_to "Edit", edit_profile_path %></button>
+    <button class="btn signout"><%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}%></button>
+    </div>
   </div>
 
-  <%= link_to "Edit", edit_profile_path, class:"btn btn-dark w-25 mt-3" %>
+  <div class="profile-button">
+  <% unless @user == current_user %>
+    <%= link_to user_chatrooms_path(@user), data: {turbo_method: :post}, class: "btn message" do %>
+    <%= image_tag "icons8-message-100.png" %>
+    <p>message</p>
+    <% end %>
+  <% end %>
 
-  <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class:"btn btn-light w-25 mx-4 mt-3"%>
-
+  </div>
 </div>
