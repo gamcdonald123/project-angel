@@ -134,6 +134,7 @@ export default class extends Controller {
     let steps = []
     let duration = 0;
     let geojson = {}
+    let latLngBounds = 0;
     fetch(url)
       .then(response => response.json())
       .then((data) => {
@@ -148,6 +149,15 @@ export default class extends Controller {
           }
         }
         duration = data.routes[0].duration;
+
+        this.map.fitBounds([
+          [longitude, latitude], // southwestern corner of the bounds
+          [this.endValue.lon, this.endValue.lat] // northeastern corner of the bounds
+        ], {
+          padding: 75 // padding in pixels
+        });
+
+
       })
 
       // if the route already exists on the map, we'll reset it using setData
@@ -222,8 +232,6 @@ export default class extends Controller {
       });
       // this is where the code from the next step will go
     });
-
-    // console.log(data);
 
   }
 
@@ -343,6 +351,13 @@ export default class extends Controller {
               }
             }
             duration = data.routes[0].duration;
+
+            this.map.fitBounds([
+              [longitude, latitude], // southwestern corner of the bounds
+              [hospital_longitude, hospital_latitude] // northeastern corner of the bounds
+            ], {
+              padding: 75 // padding in pixels
+            });
 
             if (this.map.getSource('route')) {
               this.map.getSource('route').setData(geojson);
