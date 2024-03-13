@@ -63,11 +63,23 @@ img {
   }
 }
 
+.mobile-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 130px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .button-sos {
-  background-color: lightcoral;
+  background: linear-gradient(to bottom, #ed7371 10%, #d52323 90%);
   border-radius: 70%;
+  font-weight: bold;
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 100%;
+  position:center;
   border: none;
   color: black;
   text-decoration: none;
@@ -81,12 +93,12 @@ img {
 }
 
 .button-menu {
-  background-color: lightgrey;
+  background: linear-gradient(to bottom, #868f96 10%, #596164 90%);
   border-radius: 70%;
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 25px;
   border: none;
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   display: block;
   text-align: center;
@@ -97,8 +109,11 @@ img {
   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2); // Added height property to match the height of .button-sos
 }
 
-
-
+.button-menu:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
 .button-container {
   display: flex;
   justify-content: center;
@@ -117,15 +132,6 @@ img {
   }
 }
 
-.mobile-nav {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 130px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
 
 .min-height {
   min-height: calc(100vh - 130px);
