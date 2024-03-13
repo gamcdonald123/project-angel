@@ -14,8 +14,14 @@
 
               <%= link_to map_path({path: true}), id:'get-home', class: "btn btn-light p-3 border small-button mt-3 font-weight-bold" do %>
                 <img src="<%= image_path('icons8-home-50.png',class: "description") %>"/>
+
                   <br>
-                   Go home
+                    Go home
+              <% end %>
+                  <%= link_to map_path({path: 1}), id:'get-home', class: "btn btn-light p-2 border small-button mt-3" do %>
+                <img src="<%= image_path('icons8-home-50.png') %>"/>
+                  <br>
+                    Get safe
               <% end %>
                 <div class="btn btn-light p-3 border small-button mt-3 font-weight-bold">
                   <img src="<%= image_path('icons8-lock-250.png',class: "description") %>"/>

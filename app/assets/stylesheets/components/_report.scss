@@ -1,8 +1,17 @@
 .reports-form, .reports-list{
-  background-color: #f6f4d2ee;
-  border-radius: 5px;
+  background-color: white;
+  background-image: linear-gradient(rgb(249, 230, 251),rgb(214, 214, 214));
+  border-radius: 10px;
 }
 
 .report-pages {
   padding: auto 5px;
+}
+
+
+.report-icons {
+  height: 25px;
+  width: 25px;
+  margin-right: 8px;
+  margin-bottom: 5px;
 }
