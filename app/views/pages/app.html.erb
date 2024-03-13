@@ -4,23 +4,23 @@
         <%= render "map" %>
       </a>
     </div>
-      <div class="center">
+      <div class="center fs-2">
         <div class="row">
-          <div class="button-container">
-            <div class="btn btn-light p-2 border small-button mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              <img src="<%= image_path('icons8-danger-50.png') %>"/>
+          <div class="button-container fs-2">
+            <div class="btn btn-light p-3 border small-button mt-3 font-weight-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <img src="<%= image_path('icons8-danger-50.png',class: "description") %>"/>
               <br>
               <%= link_to 'Report', new_report_path, class: "color"%> </div>
 
-              <%= link_to map_path({path: true}), id:'get-home', class: "btn btn-light p-2 border small-button mt-3" do %>
-                <img src="<%= image_path('icons8-home-50.png') %>"/>
+              <%= link_to map_path({path: true}), id:'get-home', class: "btn btn-light p-3 border small-button mt-3 font-weight-bold" do %>
+                <img src="<%= image_path('icons8-home-50.png',class: "description") %>"/>
                   <br>
                    Go home
               <% end %>
-                <div class="btn btn-light p-2 border small-button mt-3">
-                  <img src="<%= image_path('icons8-lock-250.png')%>"/>
+                <div class="btn btn-light p-3 border small-button mt-3 font-weight-bold">
+                  <img src="<%= image_path('icons8-lock-250.png',class: "description") %>"/>
                     <br>
-                  Safe Places</div>
+                  Be Safe</div>
             </div>
         </div>
       </div>

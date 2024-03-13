@@ -7,6 +7,7 @@ body {
 .image-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .center {
@@ -19,24 +20,33 @@ body {
 .button-container {
   display: flex;
   justify-content: space-around; /* Adjusts spacing between buttons */
+  align-items: center;
 }
 .container {
   width: 100%;
+
 }
 .column {
   width: 100%;
 }
 
+.description {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
 img {
   max-width: 100%;
   height: auto;
 }
 
 .small-button {
-  width: 80px;  /* Adjusts button width */
-  height: 85px;  /* Adjusts button height */
+  width: 90px;  /* Adjusts button width */
+  height: 90px;  /* Adjusts button height */
+  background-image: linear-gradient(rgb(246, 244, 210),rgb(197, 142, 241));
   display: flex;
-  margin: 10px;
+  margin: 8px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -47,14 +57,17 @@ img {
 .small-button img {
   width: 26px;  /* Adjusts image width */
   height: 26px;  /* Adjusts image height */
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  padding: 10px, 10px;
+
 }
 
 .small-map {
   width: 400px !important;  /* Adjust as needed */
-  height: 500px !important;  /* Adjust as needed */
+  height: 450px !important;  /* Adjust as needed */
   margin-left: 1px;
-  padding-top: 20px;
+  margin-bottom: 5px;
+  padding-top: 18px;
   .map-partial {
     width: 100%;
     height: 100%;
@@ -115,7 +128,7 @@ img {
   text-decoration: none;
 }
 .button-container {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
 }
