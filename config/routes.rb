@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   resources :chatrooms, except: :create do
     resources :messages, only: :create
   end
-  
+
+  resources :profiles, only: %i[show edit update]
+
   get "map", to: "pages#map"
   get "map/token", to: "pages#get_map_token"
   get "homepage", to: "pages#app"

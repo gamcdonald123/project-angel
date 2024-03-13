@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
     t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
     t.index ["user_id"], name: "index_chatroom_users_on_user_id"
   end
-  
+
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -110,6 +110,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "about"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "report_type"
     t.string "location"
@@ -163,5 +172,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_124245) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "communities"
   add_foreign_key "posts", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "reports", "users"
 end
