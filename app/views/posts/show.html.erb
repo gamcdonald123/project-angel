@@ -1,15 +1,18 @@
+
 <div class="container mt-4">
   <div class="row">
     <div class="col">
 
         <div class="posts"> <%# This posts class is also used in the communities show view %>
 
+        <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4 mt-2 ml-1"), community_path %>
           <p id="title"><%= @post.title %></p>
           <p id="content"><%= @post.content %></p>
               <div class="d-flex justify-content-between">
               <p>Sent by <%= @post.user.first_name %></p>
               <p><%= @post.created_at.strftime("%d %B %Y %H:%M") %> </p>
             </div>
+
 
         <div class="d-flex justify-content-start ml-3">
 
@@ -18,11 +21,22 @@
               <% end %>
               <div class="counter mr-4 mt-2">
                 <%= @post.votes_for.size %>
+
+              <div class="d-flex justify-content-start">
+
+                <div class="btn">
+                  <div class="icon-btn" id="like"><%= image_tag 'like_button' %></div>
+                </div>
+
+                 <div class="btn" data-controller="scrolldown" data-action="click->scrolldown#scroll">
+                   <div class="icon-btn" id="comment"><%= image_tag 'comment'%></div>
+                 </div>
+                
               </div>
 
-            <div data-controller="scroll-down" data-action="click->scroll-down#scrollDown">
-              <div class="icon-btn" id="comment"><%= image_tag 'comment' %></div>
-            </div>
+                <div data-controller="scroll-down" data-action="click->scroll-down#scrollDown">
+                   <div class="icon-btn" id="comment"><%= image_tag 'comment' %></div>
+               </div>
 
         </div>
 
@@ -56,13 +70,13 @@
           <%= simple_form_for [@post, @comment] do |f| %>
           <div class="container">
             <%= f.input :content, label: false, placeholder: "Add a comment", input_html: { style: "white-space: pre-wrap; height: auto;" } %>
+            <%= f.submit "Submit", class: "btn btn-dark rounded-4 w-100 mt-3 mb-4" %>
           </div>
-            <%= f.submit "Submit", class: "btn btn-dark rounded-4 w-75 ml-5 my-3" %>
           <% end %>
 
         </div>
 
-        <div class="btn btn-dark rounded-4 w-100 p-2 my-5" id="back_button">
+        <%# <div class="btn btn-dark rounded-4 w-100 p-2 my-5" id="back_button">
           <p><%= link_to "Back", community_path %></p>
         </div>
 
