@@ -12,7 +12,7 @@
         <%= f.input :date_and_time, label:"When did the incident occur?", html5: true %>
         <%= f.input :description, input_html: {data: {
           report_target: "description"
-        }}, :placeholder => 'i.e. catcalling...'%>
+        }, 'rows'=>5}, :placeholder => 'i.e. catcalling...'%>
         <%= f.submit value:"Report", class:"btn btn-dark rounded-4 w-100"%>
       <% end %>
     </div>
