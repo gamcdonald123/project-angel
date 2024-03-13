@@ -6,13 +6,12 @@
 
     <% @community.posts.each do |post| %>
 
-      <%= link_to community_post_path(@community, post) do %>
-<%# This posts class is also used in the posts show view %>
+      <%= link_to post_path(post) do %>
+      <%# This posts class is also used in the posts show view %>
       <div class="posts">
 
         <p id="title"><%= post.title %></p>
         <p id="content"><%= post.content.truncate(50) %></p>
-        <%# <p>Sent by <%= post.user.first_name %>
 
         </div>
       <% end %>
@@ -22,7 +21,7 @@
 <br>
 <br>
 
-<div class="btn btn-dark w-100 rounded-4 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<div class="btn btn-light w-100 rounded-4 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_button">
   <p>Add Post</p>
 </div>
 
@@ -51,10 +50,13 @@
   </div>
 </div>
 
-
+<%= link_to communities_path do %>
   <div class="btn btn-dark w-100 rounded-4">
-    <p><%= link_to "Back", communities_path %></p>
+    <p class="h6 p-3">Back</p>
   </div>
+<% end %>
+
+
 
 </div>
 </div>
