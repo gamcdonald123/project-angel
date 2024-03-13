@@ -185,9 +185,9 @@ export default class extends Controller {
       steps.forEach((step) => {
         tripInstructions += `<li>${step.maneuver.instruction}</li>`;
       })
-      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+      instructions.innerHTML = `<h5><strong>Trip duration: ${Math.floor(
         duration / 60
-      )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
+      )} min 🚶‍♀️ </strong></h5><ol>${tripInstructions}</ol>`;
 
     })
     this.map.on('load', () => {
