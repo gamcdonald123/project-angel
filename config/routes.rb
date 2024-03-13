@@ -22,7 +22,14 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: %i[show] do
-    resources :comments, only: %i[create]
+    resources :comments, only: %i[create] do
+      member do
+        patch :like
+      end
+    end
+    member do
+      patch :like
+    end
   end
 
   resources :users, only: :show do

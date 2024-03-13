@@ -3,6 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # acts_as_favoritable
+  # acts_as_favoritor
+  acts_as_voter
+
   has_many :reports
   has_many :posts
   has_many :communities, through: :posts
@@ -16,7 +21,7 @@ class User < ApplicationRecord
 
   after_create :create_user_profile
 
-private
+  private
 
   def create_user_profile
     create_profile
