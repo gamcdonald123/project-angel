@@ -27,3 +27,23 @@
 .profile-edit {
   padding: auto 10px;
 }
+
+.profile-button {
+  justify-content: center;
+  display: relative;
+
+  .message {
+    background-image: linear-gradient(rgb(227, 210, 246),rgb(118, 68, 160));
+  }
+
+}
+.edit-profile {
+
+  .signout {
+    background-image: linear-gradient(rgb(227, 210, 246),rgb(118, 68, 160));
+
+  }
+  .edit {
+    background-image: linear-gradient(rgb(227, 210, 246),rgb(118, 68, 160));
+  }
+}
