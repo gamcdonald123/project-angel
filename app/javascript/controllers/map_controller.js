@@ -308,7 +308,7 @@ export default class extends Controller {
               "longitude": data.features[0].geometry.coordinates[0],
               "latitude": data.features[0].geometry.coordinates[1],
               "info_window_html": `<div><h5>🏥 Hospital</h5><p>🪧 ${data.features[0].properties.name}</p></div>`,
-              "marker_html": `<img height="48" width="48" alt="Logo" src="/assets/hospital.png" />`
+              "marker_html": `<img height="48" width="48" alt="Logo" src="assets/hospital.png" />`
             };
 
             let hospital_longitude = data.features[0].geometry.coordinates[0]
