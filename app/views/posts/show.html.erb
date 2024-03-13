@@ -17,16 +17,24 @@
 
         <div class="d-flex justify-content-start ml-3">
 
-              <%= link_to like_post_path(@post), data: {turbo_method: :patch} do %>
-                <div class="icon-btn mr-2" id="like"><%= image_tag 'like_button' %></div>
-              <% end %>
-              <div class="counter mr-4 mt-2">
-                <%= @post.votes_for.size %>
-              </div>
+          <% if current_user.voted_up_for? @post %>
+            <%= link_to like_post_path(@post), data: {turbo_method: :patch} do %>
+              <div class="icon-btn mr-2" id="like"><%= image_tag 'like_button' %></div>
+            <% end %>
+          <% else %>
+            <%= link_to like_post_path(@post), data: {turbo_method: :patch} do %>
+              <div class="icon-btn mr-2" id="like"><%= image_tag 'unlike_button' %></div>
+            <% end %>
+          <% end %>
 
-                <div data-controller="scroll-down" data-action="click->scroll-down#scrollDown">
-                   <div class="icon-btn" id="comment"><%= image_tag 'comment' %></div>
-               </div>
+
+          <div class="counter mr-4 mt-2">
+            <%= @post.votes_for.size %>
+          </div>
+
+            <div data-controller="scroll-down" data-action="click->scroll-down#scrollDown">
+                <div class="icon-btn" id="comment"><%= image_tag 'comment' %></div>
+            </div>
 
 
         </div>
@@ -42,15 +50,21 @@
                     <p><%= comment.created_at.strftime("%d %B %Y %H:%M") %></p>
                   </div>
 
-                    <%= link_to like_post_comment_path(@post, comment), data: {turbo_method: :patch} do %>
 
-                    <p id="content"><%= comment.content.capitalize %></p>
-
+                  <p id="content"><%= comment.content.capitalize %></p>
                   <div class="d-flex justify-content-end mb-2">
-                    <div class="icon-btn" id="like-response"><%= image_tag 'like_button' %></div>
-                    <div class="counter mr-3 mt-1"> <%= comment.votes_for.size %></div>
-                  </div>
+                  <% if current_user.voted_up_for? comment %>
+                    <%= link_to like_post_comment_path(@post, comment), data: {turbo_method: :patch}, class: "d-flex" do %>
+                      <div class="icon-btn" id="like-response"><%= image_tag 'like_button' %></div>
+                      <div class="counter mr-3 mt-1"> <%= comment.votes_for.size %></div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to like_post_comment_path(@post, comment), data: {turbo_method: :patch}, class: "d-flex" do %>
+                      <div class="icon-btn" id="like-response"><%= image_tag 'unlike_button' %></div>
+                      <div class="counter mr-3 mt-1"> <%= comment.votes_for.size %></div>
                   <% end %>
+                  <% end %>
+                  </div>
                 </div>
 
              <% end %>
