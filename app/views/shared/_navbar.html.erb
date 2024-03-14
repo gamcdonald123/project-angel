@@ -4,7 +4,7 @@
   <div class="dropdown">
     <button class="button-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i>
     </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu mb-3" style="background-image: linear-gradient(rgb(237, 208, 240),rgb(225, 222, 222));">
     <li><%= link_to "Profile", profile_path(current_user), class:"dropdown-item" %></li>
     <li> <%=link_to "Messages", chatrooms_path, class:"dropdown-item"%></li>
     <li> <%=link_to "Communities", communities_path, class:"dropdown-item"%></li>
