@@ -1,7 +1,9 @@
 <div class="report-pages px-2">
 
 <div class="d-flex justify-content-between mt-4 mb-4">
-  <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4"), homepage_path %>
+   <%= link_to homepage_path do %>
+      <i class="fa-solid fa-circle-arrow-left back-button-arrow"></i>
+    <% end %>
   <h3 class="mt-2">Reports in your area</h3>
   <%= link_to(image_tag("add_button.png", alt: "Add a report", class: "d-flex rounded-4"), new_report_path) %>
 </div>
