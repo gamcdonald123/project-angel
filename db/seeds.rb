@@ -67,7 +67,7 @@ puts "Creating community posts"
 
 # Tips & Tricks
 
-Post.create!(title: "✅ Tips for choosing your route ✅", content: "When choosing your route, always try to stick to well-lit and busy areas. Avoid shortcuts through alleys and parks, and always stay on main roads.", user_id: 2, community_id: 1)
+Post.create!(title: "✅ Routing tips ✅", content: "When choosing your route, always try to stick to well-lit and busy areas. Avoid shortcuts through alleys and parks, and always stay on main roads.", user_id: 2, community_id: 1)
 
 Post.create!(title: "👀 Be as aware as possible 👂", content: "When walking at night, always be aware of your surroundings. Keep your phone in your pocket and your headphones out of your ears. Relying on all your senses and your gut feeling is the best strategy.", user_id: 1, community_id: 1)
 
@@ -95,5 +95,10 @@ Post.create!(title: "🚫 Avoiding alleys 🚫", content: "Alleys are a big no-n
 
 Post.create!(title: "🚫 Avoiding quiet streets 🚫", content: "Quiet streets mean you aren't near other people. Your best form of defense in a compromising situation is to be near other people. Use the busiest streets and areas you can find for as much of your route as possible. Only dive into quiet streets for the very last part of your journey.", user_id: 2, community_id: 3)
 
+puts "Creating 2 reports"
+
+Report.create(report_type: "Visual harassment", location: "London Bridge Station", description: "I was waiting at the bus stop outside the station, and a man was fixedly staring at me in an intimidating way.", user_id: 1, did_it_happen_to_you: true, date_and_time: "2024-02-01 12:00:00")
+
+Report.create(report_type: "Verbal harassment", location: "Shoreditch Highstreet", description: "Walking down the street and I was catcalled by a drunk man.", user_id: 1, did_it_happen_to_you: true, date_and_time: "2024-02-01 12:00:00")
 
 puts "Seeding completed"
