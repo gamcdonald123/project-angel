@@ -3,7 +3,9 @@
     <div class="col">
 
       <div class="d-flex justify-content-start mt-4 mb-3">
-        <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4 mr-4"), homepage_path %>
+        <%= link_to homepage_path do %>
+         <i class="fa-solid fa-circle-arrow-left back-button-arrow"></i>
+        <% end %>
           <h1 class="ml-2 pl-1">Communities</h1>
       </div>
 
