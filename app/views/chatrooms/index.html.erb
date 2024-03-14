@@ -1,11 +1,21 @@
 <div class="container chat">
-  <h1><i class="fa-regular fa-comments"></i> Messages</h1>
-  <div class="chat-options">
-<% @chatrooms.each do |chatroom| %>
-<div id ="chatroom<%= chatroom.name %>" class="chat-list">
-<%= link_to chatroom_path(chatroom) do %>
- <p><%= chatroom.receiver.first_name %> <%= chatroom.receiver.last_name %></p>
-<p><%= (((Time.now - chatroom.updated_at).to_f / 60) /60).floor %> hours ago</p>
-<% end %>
+
+  <div class="d-flex text-align-center mb-3 rounded-3">
+    <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4 mt-4 mb-2 mr-2"), communities_path %>
+    <h1><i class="fa-regular fa-comments mt-4 ml-4 pt-1"></i> Messages</h1>
+  </div>
+
+  <div class="chat-options rounded-3">
+    <% @chatrooms.each do |chatroom| %>
+
+      <div id ="chatroom<%= chatroom.name %>" class="chat-list mt-1 mb-1">
+        <%= link_to chatroom_path(chatroom) do %>
+        <p class="mt-2"><strong><%= chatroom.receiver.first_name %> <%= chatroom.receiver.last_name %></strong></p>
+        <p><%= (((Time.now - chatroom.updated_at).to_f / 60) /60).floor %> hour/s ago</p>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
 </div>
-<% end %>
