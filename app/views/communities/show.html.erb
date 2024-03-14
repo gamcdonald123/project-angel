@@ -8,7 +8,9 @@
         <% end %>
           <h2 class="mt-2" id="community_name"><%= @community.name %></h2>
             <div data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_button">
-              <%= image_tag("add_button.png", alt: "Add a report", class: "d-flex rounded-4 community-btn") %>
+              <%= link_to new_report_path do %>
+      <i class="fa-solid fa-circle-plus new-report-button"></i>
+    <% end %>
       </div>
 
       </div>

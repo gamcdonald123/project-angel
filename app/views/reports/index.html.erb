@@ -5,7 +5,9 @@
       <i class="fa-solid fa-circle-arrow-left back-button-arrow"></i>
     <% end %>
   <h3 class="mt-2">Reports in your area</h3>
-  <%= link_to(image_tag("add_button.png", alt: "Add a report", class: "d-flex rounded-4"), new_report_path) %>
+  <%= link_to new_report_path do %>
+      <i class="fa-solid fa-circle-plus new-report-button"></i>
+    <% end %>
 </div>
 
   <% @reports.each do |report| %>
