@@ -32,7 +32,7 @@ User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirel
 
 User.create(email: "antonia@antonia.com", password: "password", first_name: "Antonia", last_name: "Propato", home_longitude: -0.13857370577050818, home_latitude: 51.54714321927489, photo: Rails.root.join("app", "assets", "images", "profile_pic_antonio.jpeg").open)
 
-User.create(email: "gayle@gayle.com", password: "password", first_name: "", last_name: "Gayle", home_longitude: -0.09346231382179586, home_latitude: 51.54364009099498, photo: Rails.root.join("app", "assets", "images", "profile_pic_guy.jpeg").open)
+User.create(email: "gayle@gayle.com", password: "password", first_name: "Gayle", last_name: "McDonald", home_longitude: -0.09346231382179586, home_latitude: 51.54364009099498, photo: Rails.root.join("app", "assets", "images", "profile_pic_guy.jpeg").open)
 
 
 # puts "Creating 6 safe places"
