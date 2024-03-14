@@ -26,9 +26,9 @@ User.destroy_all
 
 puts "Creating logins for team"
 
-User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Nicole", home_longitude: -0.06362942153767116, home_latitude: 51.499646012648455, photo: Rails.root.join("app", "assets", "images", "profile_pic_nicole.jpg").open)
+User.create(email: "nicole@nicole.com", password: "password", first_name: "Nicole", last_name: "Farinello", home_longitude: -0.06362942153767116, home_latitude: 51.499646012648455, photo: Rails.root.join("app", "assets", "images", "profile_pic_nicole.jpg").open)
 
-User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mirela", home_longitude: -0.20725414692570132, home_latitude: 51.51226541189122, photo: Rails.root.join("app", "assets", "images", "profile_pic_mirela.jpg").open)
+User.create(email: "mirela@mirela.com", password: "password", first_name: "Mirela", last_name: "Mustic", home_longitude: -0.20725414692570132, home_latitude: 51.51226541189122, photo: Rails.root.join("app", "assets", "images", "profile_pic_mirela.jpg").open)
 
 User.create(email: "antonia@antonia.com", password: "password", first_name: "Antonia", last_name: "Propato", home_longitude: -0.13857370577050818, home_latitude: 51.54714321927489, photo: Rails.root.join("app", "assets", "images", "profile_pic_antonio.jpeg").open)
 
