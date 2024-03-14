@@ -1,2 +1,0 @@
-class SafePlace < ApplicationRecord
-end

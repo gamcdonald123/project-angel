@@ -1,9 +1,0 @@
-<div class = "container">
-<h1>Users</h1>
-
-<% User.all.each do |user| %>
-<div class="">
-  <%= link_to "chat with #{user.email}", user_chatrooms_path(user), data: {turbo_method: :post} %>
-</div>
-<% end %>
-</div>
