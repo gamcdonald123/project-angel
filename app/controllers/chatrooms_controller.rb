@@ -22,5 +22,6 @@ class ChatroomsController < ApplicationController
         render :new
       end
     end
+
   end
 end
