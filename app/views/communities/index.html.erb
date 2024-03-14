@@ -8,8 +8,8 @@
       </div>
 
       <% @communities.each do |community| %>
-          <div class="btn btn-light rounded-4 w-100 p-3 my-3" id="community_name">
-            <p><%= link_to community.name, community, class: "text-black" %></p>
+          <div class="btn community-index-btn btn-light rounded-4 w-100 p-3 my-3" id="community_name">
+            <div class="mt-3"><%= link_to community.name, community, class: "text-black h4" %></div>
           </div>
       <% end %>
 
