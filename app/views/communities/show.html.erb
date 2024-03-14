@@ -3,7 +3,9 @@
     <div class="col">
 
       <div class="d-flex justify-content-between mt-4">
-        <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4 community-btn"), communities_path %>
+        <%= link_to communities_path do %>
+        <div><i class="fa-solid fa-circle-arrow-left back-button-arrow"></i></div>
+        <% end %>
           <h2 class="mt-2" id="community_name"><%= @community.name %></h2>
             <div data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_button">
               <%= image_tag("add_button.png", alt: "Add a report", class: "d-flex rounded-4 community-btn") %>
