@@ -20,15 +20,15 @@
     <p><strong>Last name: </strong><%= @user.last_name  %></p>
     <p><strong>Email: </strong><%= @user.email %></p>
   </div>
-  <div class="buttons d-flex justify-content-between">
+  <%# <div class="buttons d-flex justify-content-between"> %>
 
-    <div class="profile-button p-3 border mt-3 font-weight-bold">
       <% unless @user == current_user %>
+    <div class="profile-button p-3 border mt-3 font-weight-bold">
         <%= link_to user_chatrooms_path(@user), data: {turbo_method: :post}, class: " message" do %>
           <img src="<%= image_path('icons8-message-50.png',class: "image-2") %>"/>
           <p class ="word">Chat</p>
         <% end %>
-      <% end %>
-    </div>
+    <%# </div> %>
   </div>
+      <% end %>
 </div>
