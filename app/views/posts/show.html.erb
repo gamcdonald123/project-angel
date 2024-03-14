@@ -5,7 +5,9 @@
 
         <div class="posts"> <%# This posts class is also used in the communities show view %>
 
-        <%= link_to image_tag("back-button2.png", alt: "Back", class: "d-flex rounded-4 mt-2 ml-1"), community_path(@post.community) %>
+        <%= link_to community_path(@post.community) do %>
+        <div><i class="fa-solid fa-circle-arrow-left back-button-arrow"></i></div>
+        <% end %>
           <p id="title"><%= @post.title %></p>
           <p id="content"><%= @post.content %></p>
 
