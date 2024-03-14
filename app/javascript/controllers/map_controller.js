@@ -52,7 +52,7 @@ export default class extends Controller {
       setInterval(() => {
         this.getCoords();
       }, 5000);
-    }, 400);
+    }, 500);
 
     this.getCrimes()
     this.getHospitals()
